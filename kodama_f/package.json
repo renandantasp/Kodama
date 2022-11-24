@@ -23,9 +23,12 @@
 		"validate": "run-p lint test:ci test:e2e:headless"
 	},
 	"dependencies": {
+		"@react-icons/all-files": "^4.1.0",
 		"@tanstack/react-query": "4.13.0",
+		"prop-types": "^15.8.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"react-icons": "^4.6.0",
 		"react-router-dom": "6.3.0"
 	},
 	"devDependencies": {
