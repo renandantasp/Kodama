@@ -5,6 +5,10 @@ const formsPlugin = require('@tailwindcss/forms')
 const config = {
 	content: ['index.html', 'src/**/*.tsx'],
 	theme: {
+		minHeight: {
+			'1/2': '50%'
+		},
+
 		fontFamily: {
 			sans: ['noto sans', 'FontAwesome']
 		}

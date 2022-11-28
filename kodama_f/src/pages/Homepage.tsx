@@ -1,10 +1,25 @@
+import GetGames from 'api/getGames'
+import GameList from 'components/gameList'
 import type { ReactElement } from 'react'
 
 export default function Homepage(): ReactElement {
+	const { isLoading, error, data } = GetGames()
+	if (isLoading) return <div>calma</div>
+	if (error) return <div>ERRROOOOOO</div>
+
 	return (
-		<div className='m-2 bg-neutral-800'>
-			{/* <p className='mb-2 text-7xl font-bold'>New and trending</p> */}
-			{/* <p>Based on player counts and release date</p> */}
+		<div>
+			<div className='mb-4'>
+				<h1 className='mb-2 text-center text-3xl font-bold'>
+					New and trending
+				</h1>
+				<h3 className='text-center text-sm'>
+					Based on player counts and release date
+				</h3>
+			</div>
+			{/* ordering/filtering components */}
+
+			<GameList games={data.results} />
 		</div>
 	)
 }

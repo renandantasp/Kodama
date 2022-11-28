@@ -13,7 +13,7 @@ export default function DefaultLayout({ children }: Properties): ReactElement {
 		<div className='h-screen'>
 			<Navbar />
 			<Sidebar />
-			<div className='relative ml-64'>{children}</div>
+			<div className='lg:relative lg:ml-64'>{children}</div>
 		</div>
 	)
 }
