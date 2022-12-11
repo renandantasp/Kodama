@@ -10,10 +10,10 @@ export default function Homepage(): ReactElement {
 	return (
 		<div>
 			<div className='mb-4'>
-				<h1 className='mb-2 text-center text-3xl font-bold'>
+				<h1 className='mb-2 text-center text-3xl font-bold lg:text-start lg:text-6xl'>
 					New and trending
 				</h1>
-				<h3 className='text-center text-sm'>
+				<h3 className='text-center text-sm lg:text-start'>
 					Based on player counts and release date
 				</h3>
 			</div>
