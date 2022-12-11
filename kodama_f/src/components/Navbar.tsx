@@ -16,7 +16,7 @@ export default function Navbar(): ReactElement {
 
 	return (
 		<div className='flex items-center justify-between p-4 lg:p-10 lg:pt-8'>
-			<a href='/' className='cursor-pointer font-black'>
+			<a href='/' className='cursor-pointer whitespace-nowrap font-black'>
 				K O D A M A
 			</a>
 			<input

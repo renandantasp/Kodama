@@ -4,7 +4,7 @@ import GameCard from './gameCard'
 
 export default function GameList({ games }: IGames | undefined): ReactElement {
 	return (
-		<div className='flex flex-col flex-wrap lg:flex-row'>
+		<div className='flex w-full flex-wrap items-center justify-around lg:flex-row'>
 			{games.map(game => (
 				<GameCard data={game} />
 			))}
