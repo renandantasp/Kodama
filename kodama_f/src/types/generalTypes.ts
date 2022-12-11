@@ -36,7 +36,7 @@ export interface IGame {
 	saturated_color: string
 	dominant_color: string
 	platforms: [IPlatGame]
-	parent_platforms: unknown
+	parent_platforms: [IParentPlatGame]
 	genres: unknown
 	stores: unknown
 	clip: unknown
@@ -68,4 +68,14 @@ export interface IPlatGame {
 	released_at: string
 	requirements_en: { minimum: string; recommended: string } | null
 	requirements_ru: { minimum: string; recommended: string } | null
+}
+
+export interface IParentPlatform {
+	id: number
+	name: string
+	slug: string
+}
+
+export interface IParentPlatGame {
+	platform: IParentPlatform
 }
