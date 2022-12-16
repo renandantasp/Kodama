@@ -10,7 +10,7 @@ export default function GameCard({ data }: unknown): ReactElement {
 	const game: IGame = data as IGame
 
 	return (
-		<div className='group m-4 w-96 rounded-lg bg-neutral-800 duration-300 ease-in-out hover:z-30 hover:rounded-b-none lg:w-72 lg:hover:scale-105'>
+		<div className='group w-96 rounded-lg bg-neutral-800 duration-300 ease-in-out hover:z-30 hover:rounded-b-none lg:w-72 lg:hover:scale-105'>
 			<GameVideo game={game.name} img_game={game.background_image} />
 			<div className='p-2 pb-4'>
 				<PlatformList slugs={game.parent_platforms.map(p => p.platform.slug)} />
@@ -27,7 +27,7 @@ export default function GameCard({ data }: unknown): ReactElement {
 					</button>
 				</div>
 			</div>
-			<div className='h-0 invisible absolute flex w-full flex-col rounded-b-lg bg-neutral-800 px-2 pt-1 opacity-0 duration-300 ease-in-out group-hover:py-4 group-hover:opacity-100 lg:group-hover:visible'>
+			<div className='h-0 absolute hidden w-full flex-col rounded-b-lg bg-neutral-800 px-2 pt-1 opacity-0 duration-300 ease-in-out group-hover:py-4 group-hover:opacity-100 lg:group-hover:flex'>
 				<div className='flex flex-row justify-between py-1'>
 					<p className='text-xs text-neutral-500'>Release date:</p>
 					<p className='text-xs text-neutral-200'>{game.released}</p>
