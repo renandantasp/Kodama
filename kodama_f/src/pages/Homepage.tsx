@@ -1,11 +1,38 @@
-import GetGames from 'api/getGames'
+import GetInifinteGames from 'api/getGames'
 import GameList from 'components/gameList'
 import type { ReactElement } from 'react'
+import { useEffect } from 'react'
 
 export default function Homepage(): ReactElement {
-	const { isLoading, error, data } = GetGames()
-	if (isLoading) return <div>calma</div>
-	if (error) return <div>ERRROOOOOO</div>
+	const {
+		data,
+		error,
+		fetchNextPage,
+		hasNextPage,
+		isFetching,
+		isFetchingNextPage,
+		status
+	} = GetInifinteGames()
+
+	useEffect(() => {
+		let fetching = false
+		const handleScroll = async e => {
+			const { scrollHeight, scrollTop, clientHeight } =
+				e.target.scrollingElement
+			if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+				fetching = true
+				if (hasNextPage) await fetchNextPage()
+				fetching = false
+			}
+		}
+		document.addEventListener('scroll', handleScroll)
+		return () => {
+			document.removeEventListener('scroll', handleScroll)
+		}
+	}, [fetchNextPage, hasNextPage])
+
+	if (status === 'loading') return <div>calma</div>
+	if (status === 'error') return <div>ERRROOOOOO</div>
 
 	return (
 		<div>
@@ -18,8 +45,11 @@ export default function Homepage(): ReactElement {
 				</h3>
 			</div>
 			{/* ordering/filtering components */}
-
-			<GameList games={data.results} />
+			<div className='lg:mb-48'>
+				{data?.pages.map((page, index) => (
+					<GameList key={index} games={page.results} />
+				))}
+			</div>
 		</div>
 	)
 }
