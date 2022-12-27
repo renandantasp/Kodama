@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable-next-line unicorn/no-unused-properties */
 import type { ReactElement } from 'react'
 import { ImMobile } from 'react-icons/im'
 import {
@@ -14,8 +15,29 @@ import {
 } from 'react-icons/si'
 import { SlGlobe } from 'react-icons/sl'
 
-export default function PlatformList({ slugs }): ReactElement {
-	const components = {
+interface Properties {
+	slugs: string[]
+}
+
+interface Comps {
+	playstation: JSX.Element
+	nintendo: JSX.Element
+	sega: JSX.Element
+	pc: JSX.Element
+	xbox: JSX.Element
+	mac: JSX.Element
+	ios: JSX.Element
+	android: JSX.Element
+	linux: JSX.Element
+	web: JSX.Element
+	atari: JSX.Element
+	'neo-geo': undefined
+	'3do': undefined
+	'commodore-amiga': undefined
+}
+
+export default function PlatformList({ slugs }: Properties): ReactElement {
+	const components: Comps = {
 		playstation: <SiPlaystation />,
 		nintendo: <SiNintendo />,
 		sega: <SiSega />,
@@ -34,7 +56,9 @@ export default function PlatformList({ slugs }): ReactElement {
 	return (
 		<div className='my-2 flex flex-row'>
 			{slugs.map(slug => (
-				<div className='mr-2'>{components[slug]}</div>
+				<div key={slug} className='mr-2'>
+					{components[slug as keyof Comps]}
+				</div>
 			))}
 		</div>
 	)

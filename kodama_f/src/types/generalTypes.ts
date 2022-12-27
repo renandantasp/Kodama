@@ -37,7 +37,7 @@ export interface IGame {
 	dominant_color: string
 	platforms: [IPlatGame]
 	parent_platforms: [IParentPlatGame]
-	genres: unknown
+	genres: [IGenre]
 	stores: unknown
 	clip: unknown
 	tags: unknown
@@ -78,4 +78,12 @@ export interface IParentPlatform {
 
 export interface IParentPlatGame {
 	platform: IParentPlatform
+}
+
+export interface IGenre {
+	id: number
+	name: string
+	slug: string
+	games_count: number
+	image_background: string
 }
