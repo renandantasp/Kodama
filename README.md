@@ -1,4 +1,4 @@
-# Kodama - A social platform for sharing, discussing and discover games
+# Kodama (WIP) - A social platform for sharing, discussing and discover games
 
 > Track games you've played, save those you want to play, tell your friends what's good
 
