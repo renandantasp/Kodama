@@ -6,7 +6,7 @@ import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import type { IGame } from 'types/generalTypes'
 import GameCardDetails from './gameCardDetails'
 import GameVideo from './gameVideo'
-import PlatformList from './platformsList'
+import PlatformList from '../platformsList'
 
 interface Properties {
 	data: IGame
@@ -24,7 +24,9 @@ export default function GameCard({ data }: Properties): ReactElement {
 			<GameVideo game={game.name} img_game={game.background_image} />
 			<div className='p-2 pb-4'>
 				<PlatformList slugs={game.parent_platforms.map(p => p.platform.slug)} />
-				<p className='text-2xl font-bold'>{game.name}</p>
+				<a href={`games/${game.slug}`} className='text-2xl font-bold'>
+					{game.name}
+				</a>
 				<div className='mt-2 flex flex-row'>
 					<button
 						type='button'

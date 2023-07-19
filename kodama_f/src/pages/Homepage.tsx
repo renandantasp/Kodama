@@ -1,5 +1,12 @@
-import GetInifinteGames from 'api/getGames'
-import GameList from 'components/gameList'
+/* eslint-disable unicorn/prevent-abbreviations */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable require-atomic-updates */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import GetInifiniteGames from 'api/getGames'
+import GameList from 'components/homepage/gameList'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
 
@@ -12,14 +19,14 @@ export default function Homepage(): ReactElement {
 		isFetching,
 		isFetchingNextPage,
 		status
-	} = GetInifinteGames()
+	} = GetInifiniteGames()
 
 	useEffect(() => {
 		let fetching = false
 		const handleScroll = async e => {
 			const { scrollHeight, scrollTop, clientHeight } =
 				e.target.scrollingElement
-			if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+			if (!fetching && scrollHeight - scrollTop <= clientHeight) {
 				fetching = true
 				if (hasNextPage) await fetchNextPage()
 				fetching = false

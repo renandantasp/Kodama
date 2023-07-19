@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import type { IGame } from 'types/generalTypes'
+import type { IGame } from '../types/generalTypes'
 
 interface Properties {
 	data: IGame

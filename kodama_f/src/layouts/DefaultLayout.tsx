@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react'
 import { lazy } from 'react'
 
-const Navbar = lazy(async () => import('../components/Navbar'))
-const Sidebar = lazy(async () => import('../components/Sidebar'))
+const Navbar = lazy(async () => import('../components/navbar'))
+const Sidebar = lazy(async () => import('../components/sidebar'))
 
 interface Properties {
 	children: JSX.Element

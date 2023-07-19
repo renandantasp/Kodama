@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 const queryClient = new QueryClient()
 
 const Homepage = lazy(async () => import('pages/Homepage'))
+const Game = lazy(async () => import('pages/Game'))
 const DefaultLayout = lazy(async () => import('layouts/DefaultLayout'))
 
 export default function App(): ReactElement {
@@ -15,6 +16,7 @@ export default function App(): ReactElement {
 				<DefaultLayout>
 					<Routes>
 						<Route path='/' element={<Homepage />} />
+						<Route path='/games/:id' element={<Game />} />
 					</Routes>
 				</DefaultLayout>
 			</BrowserRouter>

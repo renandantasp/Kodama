@@ -15,7 +15,7 @@ export default function Navbar(): ReactElement {
 	const handleClose = (): void => setOpen(false)
 
 	return (
-		<div className='flex items-center justify-between p-4 text-xs lg:p-10 lg:pt-8 lg:text-base'>
+		<div className='flex items-center justify-between bg-transparent p-4 text-xs lg:p-10 lg:pt-8 lg:text-base'>
 			<a href='/' className='cursor-pointer whitespace-nowrap font-black'>
 				K O D A M A
 			</a>

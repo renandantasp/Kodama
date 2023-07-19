@@ -7,7 +7,7 @@ import {
 	AiFillStar
 } from 'react-icons/ai'
 
-const SidebarSubLink = lazy(async () => import('./SidebarSubLink'))
+const SidebarSubLink = lazy(async () => import('./sidebarSubLink'))
 
 export default function Sidebar(): ReactElement {
 	return (
