@@ -25,6 +25,8 @@ export interface IGame {
 	ratings: [IRating]
 	ratings_count: number
 	reviews_text_count: number
+	description: string
+	description_raw: string
 	added: number
 	added_by_status: unknown
 	metacritic: number

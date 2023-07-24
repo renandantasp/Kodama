@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable-next-line unicorn/no-unused-properties */
 import type { ReactElement } from 'react'
 import { ImMobile } from 'react-icons/im'
 import {

@@ -2,7 +2,7 @@ import type { UseQueryResult } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
 
 export default function GetGameById(id: string): UseQueryResult {
-	const response: UseQueryResult = useQuery({
+	return useQuery({
 		queryKey: ['repoData'],
 		queryFn: async () =>
 			fetch(
@@ -11,5 +11,4 @@ export default function GetGameById(id: string): UseQueryResult {
 				}`
 			).then(async res => res.json())
 	})
-	return response
 }

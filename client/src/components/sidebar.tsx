@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react'
-import { lazy } from 'react'
 import {
 	AiFillCalendar,
 	AiFillFastForward,
@@ -7,12 +6,12 @@ import {
 	AiFillStar
 } from 'react-icons/ai'
 
-const SidebarSubLink = lazy(async () => import('./sidebarSubLink'))
+import SidebarSubLink from './sidebarSubLink'
 
 export default function Sidebar(): ReactElement {
 	return (
 		<div className='hidden lg:flex'>
-			<div className='absolute flex w-64 flex-col justify-start pt-11 pl-10'>
+			<div className='absolute z-20 mt-16 flex w-64 flex-col justify-start pt-11 pl-10'>
 				<a
 					href='/#'
 					className='duration-400 mb-5 w-full text-2xl font-semibold transition ease-in-out hover:text-neutral-500'

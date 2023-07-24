@@ -1,6 +1,7 @@
 const defaultConfig = require('tailwindcss/defaultConfig')
 const formsPlugin = require('@tailwindcss/forms')
 const ratioPlugin = require('@tailwindcss/aspect-ratio')
+const percentageWidth = require('tailwindcss-percentage-width') // load the plugin
 
 /** @type {import('tailwindcss/types').Config} */
 const config = {

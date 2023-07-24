@@ -7,18 +7,16 @@ const queryClient = new QueryClient()
 
 const Homepage = lazy(async () => import('pages/Homepage'))
 const Game = lazy(async () => import('pages/Game'))
-const DefaultLayout = lazy(async () => import('layouts/DefaultLayout'))
+// const DefaultLayout = lazy(async () => import('layouts/DefaultLayout'))
 
 export default function App(): ReactElement {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
-				<DefaultLayout>
-					<Routes>
-						<Route path='/' element={<Homepage />} />
-						<Route path='/games/:id' element={<Game />} />
-					</Routes>
-				</DefaultLayout>
+				<Routes>
+					<Route path='/' element={<Homepage />} />
+					<Route path='/games/:id' element={<Game />} />
+				</Routes>
 			</BrowserRouter>
 		</QueryClientProvider>
 	)
