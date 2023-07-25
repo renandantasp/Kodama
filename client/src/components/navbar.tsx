@@ -15,12 +15,15 @@ export default function Navbar(): ReactElement {
 	const handleClose = (): void => setOpen(false)
 
 	return (
-		<div className='fixed z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:absolute lg:p-10 lg:pt-8 lg:text-base'>
-			<a href='/' className='cursor-pointer whitespace-nowrap font-black'>
+		<div className='z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:absolute lg:p-10 lg:pt-8 lg:text-base'>
+			<a
+				href='/'
+				className='cursor-pointer select-none whitespace-nowrap font-black'
+			>
 				K O D A M A
 			</a>
 			<input
-				className='mx-6 w-1/3 rounded-full bg-neutral-500 px-4 py-2 opacity-50 transition placeholder:text-sm placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 lg:flex-1 lg:py-2'
+				className='w-[60%] ml-0 mr-3 rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 lg:mx-6 lg:flex-1 lg:py-2'
 				placeholder='&#xF002;   Search for games'
 			/>
 

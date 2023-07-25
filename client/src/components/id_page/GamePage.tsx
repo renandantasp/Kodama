@@ -17,14 +17,14 @@ export default function GamePage({ game }: Props): ReactElement {
 			<Navbar />
 			<Sidebar />
 			<div className='lg:relative lg:mt-2 lg:pl-64'>
-				<div className='pt-20 text-xs lg:mx-[19%] lg:pt-[8.5em]'>
+				<div className='pt-4 text-xs lg:mx-[19%] lg:pt-[8.5em]'>
 					<div className='flex w-full flex-col justify-start px-8 lg:px-0 '>
 						<section className=' flex flex-col items-center lg:w-full lg:flex-row '>
 							<div className='mx-4 mb-4 mt-2 w-full lg:w-[55%]'>
 								<p className='mb-3 text-center text-[.7em] tracking-[.17em] text-neutral-400 lg:text-start'>
 									HOME / GAMES / {game.name.toUpperCase()}
 								</p>
-								<div className='flex flex-row items-center justify-center text-[.9em] tracking-[.25em] lg:justify-start'>
+								<div className='flex flex-row flex-wrap items-center justify-center text-[.9em] tracking-[.25em] lg:justify-start'>
 									<p className='mr-4 w-fit rounded bg-neutral-100 py-0.5 px-1 text-neutral-900'>
 										{DateParser(game.released)}
 									</p>

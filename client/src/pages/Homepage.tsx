@@ -51,7 +51,7 @@ export default function Homepage(): ReactElement {
 		<div className='h-screen'>
 			{bars}
 
-			<div className='pt-24 lg:mt-32 lg:ml-64 lg:pt-0'>
+			<div className='pt-4 lg:mt-32 lg:ml-64 lg:pt-0'>
 				<div className='mb-4 '>
 					<h1 className='mb-2 text-center text-3xl font-bold lg:text-start lg:text-6xl'>
 						New and trending
