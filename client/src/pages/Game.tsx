@@ -9,7 +9,7 @@ export default function Game(): ReactElement {
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}
-	const { isLoading, error, data } = GetGameById(params.id)
+	const { isLoading, error, data } = GetGameById(params.id, '')
 
 	if (isLoading) return <div>calma</div>
 	if (error) return <div>ERRROOOOOO</div>
