@@ -22,8 +22,15 @@ export default function GameCard({ data }: Properties): ReactElement {
 	return (
 		<div className='group my-4 w-[22em] rounded-lg bg-neutral-800 duration-300 ease-in-out hover:z-10 hover:rounded-b-none lg:w-72 lg:rounded-b-lg lg:hover:scale-105'>
 			<GameVideo game={game.name} img_game={game.background_image} />
-			<div className='p-2 pb-4'>
-				<PlatformList slugs={game.parent_platforms.map(p => p.platform.slug)} />
+			<div className='p-4'>
+				<div className='flex items-center justify-between'>
+					<PlatformList
+						slugs={game.parent_platforms.map(p => p.platform.slug)}
+					/>
+					<p className='rounded border border-lime-500 px-1.5 text-sm font-medium text-lime-500'>
+						{game.metacritic}
+					</p>
+				</div>
 				<a href={`games/${game.slug}`} className='text-2xl font-bold'>
 					{game.name}
 				</a>
