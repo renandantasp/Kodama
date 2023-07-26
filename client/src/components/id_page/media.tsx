@@ -16,10 +16,9 @@ export default function Media({ game_id, game_name }: Props): ReactElement {
 	if (isLoadingScreenshot) return <div>calma</div>
 	if (errorScreenshot) return <div>ERRROOOOOO</div>
 	const pics = dataScreenshot.results
-	if (pics.length % 2 === 0 && pics.length > 2) {
-		pics.pop()
+	if (pics.length > 5) {
+		pics.length = 5
 	}
-	console.log(pics.length)
 	// console.log(dataVideo)
 	// const trailerUrl = `https://youtube.com/embed/${dataVideo.items[0].id.videoId}?autoplay=1&mute=1?controls=0`
 	// console.log(trailerUrl)
@@ -27,7 +26,7 @@ export default function Media({ game_id, game_name }: Props): ReactElement {
 	return (
 		<div className=''>
 			{/* <iframe className='rounded-lg' src={trailerUrl} /> */}
-			<div className='hidden lg:mt-10 mx-8 lg:flex lg:flex-wrap lg:justify-around'>
+			<div className='mx-8 hidden lg:mt-10 lg:flex lg:flex-wrap lg:justify-around'>
 				{pics.map((s, index) => (
 					<img
 						key={s.id}

@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default function GamePage({ game }: Props): ReactElement {
+	const descr = <div dangerouslySetInnerHTML={{ __html: game.description }} />
 	return (
 		<div className='w-full'>
 			<Navbar />
@@ -20,7 +21,7 @@ export default function GamePage({ game }: Props): ReactElement {
 				<div className='pt-4 text-xs lg:mx-[19%] lg:pt-[8.5em]'>
 					<div className='flex w-full flex-col justify-start px-8 lg:flex-row lg:px-0'>
 						<section className='flex flex-col lg:w-[55%] '>
-							<div className='mx-4 mb-4 mt-2 w-full '>
+							<div className='my-2 w-full'>
 								<p className='mb-3 text-center text-[.7em] tracking-[.17em] text-neutral-400 lg:text-start'>
 									HOME / GAMES / {game.name.toUpperCase()}
 								</p>
@@ -44,7 +45,7 @@ export default function GamePage({ game }: Props): ReactElement {
 							<div className='lg:hidden'>
 								<Media game_id={game.slug} game_name={game.name} />
 							</div>
-							<div className='m-4 w-full lg:w-[90%]'>
+							<div className='my-4 w-full lg:w-[90%]'>
 								<div className='mb-8 flex flex-col items-center  lg:flex-row lg:justify-start'>
 									<button
 										type='button'
@@ -74,7 +75,7 @@ export default function GamePage({ game }: Props): ReactElement {
 								</div>
 								<Ratings rating={game.ratings} />
 								<h3 className='text-xl font-medium'>About</h3>
-								<p className='text-sm'>{game.description_raw}</p>
+								<div className='text-sm'>{descr}</div>
 							</div>
 						</section>
 						<section className='flex flex-row lg:w-[45%]'>

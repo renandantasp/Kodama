@@ -9,7 +9,7 @@ interface Props {
 
 export default function GameList({ games }: Props): ReactElement {
 	return (
-		<div className='mr-6 flex flex-col flex-wrap items-center justify-between lg:flex-row lg:items-start'>
+		<div className='lg:mr-6 flex flex-col flex-wrap items-center justify-between lg:flex-row lg:items-start'>
 			{games.map((game: IGame) => (
 				<GameCard key={game.id} data={game} />
 			))}
