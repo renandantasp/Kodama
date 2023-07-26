@@ -22,7 +22,7 @@ export default function Homepage(): ReactElement {
 		async function handleScroll(): Promise<void> {
 			const { scrollHeight, scrollTop, clientHeight } = document.documentElement // e.target.scrollingElement
 
-			if (!fetching && scrollHeight - scrollTop <= clientHeight) {
+			if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
 				fetching = true
 				if (hasNextPage)
 					await fetchNextPage().then(() => {

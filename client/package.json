@@ -1,5 +1,5 @@
 {
-	"name": "vitamin",
+	"name": "Kodama",
 	"license": "MIT",
 	"private": true,
 	"version": "0.0.0",
@@ -39,7 +39,6 @@
 		"react-icons": "^4.6.0",
 		"react-query": "^3.39.2",
 		"react-router-dom": "6.3.0",
-		"tailwindcss-percentage-width": "^1.0.3",
 		"video-react": "^0.16.0",
 		"youtube-search": "^1.1.6",
 		"youtube-search-without-api-key": "^1.1.0"
