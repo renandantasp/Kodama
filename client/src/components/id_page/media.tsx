@@ -10,7 +10,7 @@ export default function Media({ game_id }: Props): ReactElement {
 
 	if (isLoading) return <div>calma</div>
 	if (error) return <div>ERRROOOOOO</div>
-	console.log(data)
+	console.log('MEDIA APARECENDO!')
 	return (
 		<div className='lg:h-full relative flex h-[13em] flex-row overflow-x-auto overflow-y-hidden lg:flex-wrap lg:overflow-x-hidden'>
 			{data.results.map(s => (
