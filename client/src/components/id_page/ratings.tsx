@@ -42,7 +42,7 @@ export default function Ratings({ rating }: Props): ReactElement {
 	))
 
 	return (
-		<div className='flex w-full mb-8 flex-col items-center lg:items-start'>
+		<div className='mb-8 flex w-full flex-col items-center lg:items-start'>
 			<div className='mb-6 flex flex-col items-center lg:items-start'>
 				<p className='mb-1 text-xl font-bold tracking-[.1em]'>
 					{rating[0].title[0].toUpperCase() + rating[0].title.slice(1)}{' '}

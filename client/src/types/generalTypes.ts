@@ -2,7 +2,7 @@ export interface IGames {
 	count: number
 	next: string | null
 	previous: string | null
-	results: [IGame]
+	results: IGame[]
 	seo_title: string
 	seo_descriptions: string
 	seo_keywords: string
@@ -22,7 +22,7 @@ export interface IGame {
 	background_image: string
 	rating: number
 	rating_top: number
-	ratings: [IRating]
+	ratings: IRating[]
 	ratings_count: number
 	reviews_text_count: number
 	description: string
@@ -37,9 +37,9 @@ export interface IGame {
 	reviews_count: number
 	saturated_color: string
 	dominant_color: string
-	platforms: [IPlatGame]
-	parent_platforms: [IParentPlatGame]
-	genres: [IGenre]
+	platforms: IPlatGame[]
+	parent_platforms: IParentPlatGame[]
+	genres: IGenre[]
 	stores: unknown
 	clip: unknown
 	tags: unknown

@@ -43,7 +43,7 @@ export default function GamePage({ game }: Props): ReactElement {
 								</h1>
 							</div>
 							<div className='lg:hidden'>
-								<Media game_id={game.slug} game_name={game.name} />
+								<Media game_id={game.slug} />
 							</div>
 							<div className='my-4 w-full lg:w-[90%]'>
 								<div className='mb-8 flex flex-col items-center  lg:flex-row lg:justify-start'>
@@ -80,7 +80,7 @@ export default function GamePage({ game }: Props): ReactElement {
 						</section>
 						<section className='flex flex-row lg:w-[45%]'>
 							<div className='hidden lg:block'>
-								<Media game_id={game.slug} game_name={game.name} />
+								<Media game_id={game.slug} />
 							</div>
 						</section>
 					</div>

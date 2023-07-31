@@ -1,7 +1,8 @@
 import type { UseInfiniteQueryResult } from '@tanstack/react-query'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import type { IGames } from 'types/generalTypes'
 
-function GetInfiniteGames(): UseInfiniteQueryResult {
+function GetInfiniteGames(): UseInfiniteQueryResult<IGames> {
 	const fetchGames = async ({
 		pageParam: pageParameter = 1
 	}): Promise<unknown> => {
@@ -16,7 +17,7 @@ function GetInfiniteGames(): UseInfiniteQueryResult {
 	const result = useInfiniteQuery({
 		queryKey: ['games'],
 		queryFn: fetchGames,
-		getNextPageParam: (lastPage, pages) => lastPage.next
+		getNextPageParam: lastPage => lastPage.next
 	})
 
 	return result

@@ -1,16 +1,16 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import GetInifiniteGames from 'api/getGames'
 import GameList from 'components/homepage/gameList'
 import Navbar from 'components/navbar'
 import Sidebar from 'components/sidebar'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
-import type { IGame } from 'types/generalTypes'
 
 export default function Homepage(): ReactElement {
 	const { data, fetchNextPage, hasNextPage, status } = GetInifiniteGames()
 
 	const bars = (
-		<div className=''>
+		<div>
 			<Navbar />
 			<Sidebar />
 		</div>
@@ -20,7 +20,7 @@ export default function Homepage(): ReactElement {
 		let fetching = false
 
 		async function handleScroll(): Promise<void> {
-			const { scrollHeight, scrollTop, clientHeight } = document.documentElement // e.target.scrollingElement
+			const { scrollHeight, scrollTop, clientHeight } = document.documentElement
 
 			if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
 				fetching = true
@@ -62,7 +62,7 @@ export default function Homepage(): ReactElement {
 				</div>
 				<div className='lg:mb-48'>
 					{data?.pages.map((page, index) => (
-						<GameList key={index} games={page.results as [IGame]} />
+						<GameList key={page.results[index].id} games={page.results} />
 					))}
 				</div>
 			</div>

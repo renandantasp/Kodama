@@ -3,10 +3,9 @@ import type { ReactElement } from 'react'
 
 interface Props {
 	game_id: string
-	game_name: string
 }
 
-export default function Media({ game_id, game_name }: Props): ReactElement {
+export default function Media({ game_id }: Props): ReactElement {
 	const {
 		isLoading: isLoadingScreenshot,
 		error: errorScreenshot,
@@ -27,25 +26,25 @@ export default function Media({ game_id, game_name }: Props): ReactElement {
 		<div className=''>
 			{/* <iframe className='rounded-lg' src={trailerUrl} /> */}
 			<div className='mx-8 hidden lg:mt-10 lg:flex lg:flex-wrap lg:justify-around'>
-				{pics.map((s, index) => (
+				{pics.map((pic, index) => (
 					<img
-						key={s.id}
+						key={pic.id}
 						className={`m-1 ${
 							index > 0 ? 'w-[11.7rem]' : 'w-full px-1.5'
 						} rounded-lg`}
-						src={s.image}
-						alt={s.id}
+						src={pic.image}
+						alt={pic.id}
 					/>
 				))}
 			</div>
 
 			<div className='relative flex h-[13em] flex-row overflow-x-auto lg:hidden'>
-				{pics.map(s => (
+				{pics.map(pic => (
 					<img
-						key={s.id}
+						key={pic.id}
 						className='mr-4 rounded-lg p-1 '
-						src={s.image}
-						alt={s.id}
+						src={pic.image}
+						alt={pic.id}
 					/>
 				))}
 			</div>

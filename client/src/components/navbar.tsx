@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-handler-names */
-/* eslint-disable react/button-has-type */
 import Modal from '@mui/material/Modal'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
@@ -11,8 +9,8 @@ import {
 
 export default function Navbar(): ReactElement {
 	const [open, setOpen] = useState(false)
-	const handleOpen = (): void => setOpen(true)
-	const handleClose = (): void => setOpen(false)
+	const onOpen = (): void => setOpen(true)
+	const onClose = (): void => setOpen(false)
 
 	return (
 		<div className='z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:absolute lg:p-10 lg:pt-8 lg:text-base'>
@@ -23,7 +21,7 @@ export default function Navbar(): ReactElement {
 				K O D A M A
 			</a>
 			<input
-				className='w-[60%] ml-0 mr-3 rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 lg:mx-6 lg:flex-1 lg:py-2'
+				className='ml-0 mr-3 w-[60%] rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 lg:mx-6 lg:flex-1 lg:py-2'
 				placeholder='&#xF002;   Search for games'
 			/>
 
@@ -41,14 +39,15 @@ export default function Navbar(): ReactElement {
 				</div>
 			</div>
 			<button
-				onClick={handleOpen}
+				type='button'
+				onClick={onOpen}
 				className='block transition duration-200 ease-in-out lg:hidden'
 			>
 				<AiOutlineMenu />
 			</button>
 			<Modal
 				open={open}
-				onClose={handleClose}
+				onClose={onClose}
 				className='flex-end mr-4 mt-4 flex items-start justify-end'
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'
@@ -61,7 +60,7 @@ export default function Navbar(): ReactElement {
 						<a href='/' className='mr-2 text-sm text-white hover:underline'>
 							Sign Up
 						</a>
-						<button onClick={handleClose} className='text-white'>
+						<button type='button' onClick={onClose} className='text-white'>
 							<AiOutlineClose />
 						</button>
 					</div>

@@ -8,11 +8,11 @@ import PlatformList from '../platformsList'
 import GameCardDetails from './gameCardDetails'
 import GameVideo from './gameVideo'
 
-interface Properties {
+interface Props {
 	data: IGame
 }
 
-export default function GameCard({ data }: Properties): ReactElement {
+export default function GameCard({ data }: Props): ReactElement {
 	const game: IGame = data
 	const [viewMore, setViewMore] = useState(false)
 	const onToggleView = (): void => {
