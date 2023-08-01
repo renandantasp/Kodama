@@ -1,4 +1,5 @@
 import GetGameById from 'api/getGameById'
+import Loading from 'components/loading'
 import type { ReactElement } from 'react'
 
 interface Props {
@@ -12,7 +13,12 @@ export default function Media({ game_id }: Props): ReactElement {
 		data: dataScreenshot
 	} = GetGameById(game_id, 'screenshots')
 
-	if (isLoadingScreenshot) return <div>calma</div>
+	if (isLoadingScreenshot)
+		return (
+			<div className='h-full flex w-full items-center justify-center lg:h-[32rem] lg:w-[24rem] '>
+				<Loading />
+			</div>
+		)
 	if (errorScreenshot) return <div>ERRROOOOOO</div>
 	const pics = dataScreenshot.results
 	if (pics.length > 5) {

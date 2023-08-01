@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import GetInifiniteGames from 'api/getInfiniteGames'
+import Error from 'components/error'
 import GameList from 'components/homepage/gameList'
+import Loading from 'components/loading'
 import Navbar from 'components/navbar'
 import Sidebar from 'components/sidebar'
 import type { ReactElement } from 'react'
@@ -38,9 +40,16 @@ export default function Homepage(): ReactElement {
 	}, [fetchNextPage, hasNextPage])
 
 	if (status.toString() === 'loading') {
-		return <div>{bars}</div>
+		return (
+			<div className='h-screen'>
+				{bars}
+				<div className='flex h-[90vh] items-center justify-center lg:ml-64'>
+					<Loading />
+				</div>
+			</div>
+		)
 	}
-	if (status.toString() === 'error') return <div>error</div>
+	if (status.toString() === 'error') return <Error />
 
 	return (
 		<div className='h-screen'>

@@ -1,13 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import GetRandomGame from 'api/getRandomGame'
+import Error from 'components/error'
 import Navbar from 'components/navbar'
 import type { ReactElement } from 'react'
 
 function PasswordRecovery(): ReactElement {
 	const { isLoading, error, data } = GetRandomGame()
 
-	if (isLoading) return <div>calma</div>
-	if (error) return <div>ERRROOOOOO</div>
+	if (isLoading)
+		return (
+			<div>
+				<Navbar />
+			</div>
+		)
+	if (error) return <Error />
 
 	// console.log(data?.results[0].background_image)
 	return (

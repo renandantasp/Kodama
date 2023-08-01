@@ -43,16 +43,32 @@ export default function Ratings({ rating }: Props): ReactElement {
 
 	return (
 		<div className='mb-8 flex w-full flex-col items-center lg:items-start'>
-			<div className='mb-6 flex flex-col items-center lg:items-start'>
-				<p className='mb-1 text-xl font-bold tracking-[.1em]'>
-					{rating[0].title[0].toUpperCase() + rating[0].title.slice(1)}{' '}
-					<span>{configs[rating[0].title].emoji}</span>
-				</p>
-				<p className='text-sm tracking-[.1em] text-neutral-500 underline'>
-					{rating.reduce((prev, current) => prev + current.count, 0)} RATINGS
-				</p>
+			{rating.length > 0 ? (
+				<div className='mb-6 flex flex-col items-center lg:items-start'>
+					<p className='mb-1 text-xl font-bold tracking-[.1em]'>
+						{rating[0].title[0].toUpperCase() + rating[0].title.slice(1)}{' '}
+						<span>{configs[rating[0].title].emoji}</span>
+					</p>
+					<p className='text-sm tracking-[.1em] text-neutral-500 underline'>
+						{rating.reduce((prev, current) => prev + current.count, 0)} RATINGS
+					</p>
+				</div>
+			) : (
+				<div className='mb-6 flex flex-col items-center lg:items-start'>
+					<p className='mb-1 text-xl font-bold tracking-[.1em]'>
+						Not rated yet 😪
+					</p>
+				</div>
+			)}
+			<div className='flex h-[48px] w-full'>
+				{rating.length > 0 ? (
+					bars
+				) : (
+					<div className='flex w-full items-center justify-center rounded-lg bg-neutral-500 text-lg font-medium'>
+						😪 No reviews
+					</div>
+				)}
 			</div>
-			<div className='flex h-[48px] w-full'>{bars}</div>
 			<div className='my-3 flex flex-row flex-wrap'>
 				{rating.map(r => (
 					<div

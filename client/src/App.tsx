@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import NotFound from 'components/notFound'
 import type { ReactElement } from 'react'
 import { lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -22,6 +23,7 @@ export default function App(): ReactElement {
 					<Route path='/signup' element={<SignUp />} />
 					<Route path='/password_recovery' element={<PasswordRecovery />} />
 					<Route path='/games/:id' element={<Game />} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 		</QueryClientProvider>

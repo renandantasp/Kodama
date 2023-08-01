@@ -56,13 +56,13 @@ export default function Navbar(): ReactElement {
 					<div className='flex flex-row items-center justify-between rounded-t-lg bg-neutral-900 p-4'>
 						<a
 							href='/login'
-							className='mr-2 text-sm text-white hover:underline'
+							className='mr-2 text-sm rounded-full text-black bg-white px-2 py-1'
 						>
 							Log In
 						</a>
 						<a
 							href='/signup'
-							className='mr-2 text-sm text-white hover:underline'
+							className='mr-2 text-sm rounded-full text-black bg-white px-2 py-1'
 						>
 							Sign Up
 						</a>
@@ -71,26 +71,26 @@ export default function Navbar(): ReactElement {
 						</button>
 					</div>
 					<div className='flex flex-col rounded-b-lg bg-white p-4 text-neutral-900'>
-						<a href='/' className='mb-2 text-lg font-medium'>
+						<a href='/' className='mb-2 text-xl font-medium'>
 							Home
 						</a>
 						<div className='mb-2 flex flex-col'>
-							<a href='/' className='text-lg font-medium'>
-								Link father
+							<a href='/' className='my-1 text-xl font-medium'>
+								Browse
 							</a>
-							<a href='/' className='ml-4'>
-								Link father
+							<a href='/' className='my-1 text-sm'>
+								Reviews
 							</a>
-							<a href='/' className='ml-4'>
-								Link father
+							<a href='/' className='my-1 text-sm'>
+								Collections
 							</a>
-							<a href='/' className='ml-4'>
-								Link father
+							<a href='/' className='my-1 text-sm'>
+								Genres
+							</a>
+							<a href='/' className='my-1 text-sm'>
+								Platforms
 							</a>
 						</div>
-						<a href='/' className='mb-2 text-lg font-medium'>
-							Another Link
-						</a>
 					</div>
 				</div>
 			</Modal>

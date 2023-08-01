@@ -27,9 +27,13 @@ export default function GameCard({ data }: Props): ReactElement {
 					<PlatformList
 						slugs={game.parent_platforms.map(p => p.platform.slug)}
 					/>
-					<p className='rounded border border-lime-500 px-1.5 text-sm font-medium text-lime-500'>
-						{game.metacritic}
-					</p>
+					{game.metacritic ? (
+						<p className='rounded border border-lime-500 px-1.5 text-sm font-medium text-lime-500'>
+							{game.metacritic}
+						</p>
+					) : (
+						<div />
+					)}
 				</div>
 				<a href={`games/${game.slug}`} className='text-2xl font-bold'>
 					{game.name}
@@ -67,7 +71,7 @@ export default function GameCard({ data }: Props): ReactElement {
 				onClick={onToggleView}
 				className='w-full rounded-b-lg p-2 pb-4 text-center text-xs underline lg:hidden'
 			>
-				Show more
+				{viewMore ? 'Show less' : 'Show more'}
 			</button>
 		</div>
 	)
