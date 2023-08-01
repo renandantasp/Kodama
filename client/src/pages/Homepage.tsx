@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import GetInifiniteGames from 'api/getGames'
+import GetInifiniteGames from 'api/getInfiniteGames'
 import GameList from 'components/homepage/gameList'
 import Navbar from 'components/navbar'
 import Sidebar from 'components/sidebar'
@@ -38,20 +38,18 @@ export default function Homepage(): ReactElement {
 	}, [fetchNextPage, hasNextPage])
 
 	if (status.toString() === 'loading') {
-		return (
-			<div>
-				{bars}
-				<div className='lg:relative lg:ml-64'>Loading...</div>
-			</div>
-		)
+		return <div>{bars}</div>
 	}
 	if (status.toString() === 'error') return <div>error</div>
 
 	return (
 		<div className='h-screen'>
-			{bars}
+			<div>
+				<Navbar />
+				<Sidebar />
+			</div>
 
-			<div className='pt-4 lg:mt-32 lg:ml-64 lg:pt-0'>
+			<div className='pt-4 lg:ml-64 lg:pt-4'>
 				<div className='mb-4 '>
 					<h1 className='mb-2 text-center text-3xl font-bold lg:text-start lg:text-6xl'>
 						New and trending

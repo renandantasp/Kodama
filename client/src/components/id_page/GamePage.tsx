@@ -17,8 +17,8 @@ export default function GamePage({ game }: Props): ReactElement {
 		<div className='w-full'>
 			<Navbar />
 			<Sidebar />
-			<div className='lg:relative lg:mt-2 lg:pl-64'>
-				<div className='pt-4 text-xs lg:mx-[19%] lg:pt-[8.5em]'>
+			<div className='lg:relative lg:mt-2  lg:pl-64'>
+				<div className='pt-4 text-xs lg:mx-[19%] lg:pt-0'>
 					<div className='flex w-full flex-col justify-start px-8 lg:flex-row lg:px-0'>
 						<section className='flex flex-col lg:w-[55%] '>
 							<div className='my-2 w-full'>
@@ -27,7 +27,7 @@ export default function GamePage({ game }: Props): ReactElement {
 								</p>
 								<div className='flex flex-row  flex-wrap items-center justify-center text-[.9em] tracking-[.25em] lg:justify-start'>
 									<p className='mr-4 w-fit rounded bg-neutral-100 py-0.5 px-1 text-neutral-900'>
-										{DateParser(game.released)}
+										{DateParser(game.released).toUpperCase()}
 									</p>
 									<div className='mx-1 lg:text-lg'>
 										<PlatformList

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export default function GetGameById(id: string, mod?: string): UseQueryResult {
 	const baseUrl: string = import.meta.env.VITE_RAWG_URL
-	const key: string = import.meta.env.VITE_RAWG_KEY
+	const key = `?key=${import.meta.env.VITE_RAWG_KEY}`
 
 	const link = `${baseUrl}games/${id}${mod ? `/${mod}` : ''}${key}`
 

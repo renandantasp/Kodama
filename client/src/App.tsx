@@ -7,6 +7,9 @@ const queryClient = new QueryClient()
 
 const Homepage = lazy(async () => import('pages/Homepage'))
 const Game = lazy(async () => import('pages/Game'))
+const Login = lazy(async () => import('pages/Login'))
+const SignUp = lazy(async () => import('pages/SignUp'))
+const PasswordRecovery = lazy(async () => import('pages/PasswordRecovery'))
 // const DefaultLayout = lazy(async () => import('layouts/DefaultLayout'))
 
 export default function App(): ReactElement {
@@ -15,6 +18,9 @@ export default function App(): ReactElement {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Homepage />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/password_recovery' element={<PasswordRecovery />} />
 					<Route path='/games/:id' element={<Game />} />
 				</Routes>
 			</BrowserRouter>

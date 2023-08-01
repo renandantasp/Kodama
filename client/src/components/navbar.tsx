@@ -13,7 +13,7 @@ export default function Navbar(): ReactElement {
 	const onClose = (): void => setOpen(false)
 
 	return (
-		<div className='z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:absolute lg:p-10 lg:pt-8 lg:text-base'>
+		<div className='z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:p-10 lg:pt-8 lg:text-base'>
 			<a
 				href='/'
 				className='cursor-pointer select-none whitespace-nowrap font-black'
@@ -21,16 +21,16 @@ export default function Navbar(): ReactElement {
 				K O D A M A
 			</a>
 			<input
-				className='ml-0 mr-3 w-[60%] rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 lg:mx-6 lg:flex-1 lg:py-2'
+				className='ml-0 mr-3 w-[60%] rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 focus:outline-none placeholder:focus:text-black lg:mx-6 lg:flex-1 lg:py-2'
 				placeholder='&#xF002;   Search for games'
 			/>
 
 			<div className='hidden transition duration-200 ease-in-out lg:flex'>
 				<div className='flex items-center'>
-					<a className='mr-6 text-sm' href='/'>
+					<a className='mr-6 text-sm' href='/login'>
 						LOG IN
 					</a>
-					<a className='mr-6 text-sm' href='/'>
+					<a className='mr-6 text-sm' href='/signup'>
 						SIGNUP
 					</a>
 					<a href='/'>
@@ -54,10 +54,16 @@ export default function Navbar(): ReactElement {
 			>
 				<div className='flex w-64 flex-col duration-700 ease-in-out'>
 					<div className='flex flex-row items-center justify-between rounded-t-lg bg-neutral-900 p-4'>
-						<a href='/' className='mr-2 text-sm text-white hover:underline'>
+						<a
+							href='/login'
+							className='mr-2 text-sm text-white hover:underline'
+						>
 							Log In
 						</a>
-						<a href='/' className='mr-2 text-sm text-white hover:underline'>
+						<a
+							href='/signup'
+							className='mr-2 text-sm text-white hover:underline'
+						>
 							Sign Up
 						</a>
 						<button type='button' onClick={onClose} className='text-white'>
