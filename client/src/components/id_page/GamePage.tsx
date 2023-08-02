@@ -1,9 +1,12 @@
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import Media from 'components/id_page/media'
 import Ratings from 'components/id_page/ratings'
 import Navbar from 'components/navbar'
 import PlatformList from 'components/platformsList'
 import Sidebar from 'components/sidebar'
+import StoreButtons from 'components/storeButtons'
 import type { ReactElement } from 'react'
+import { useEffect } from 'react'
 import type { IGame } from 'types/generalTypes'
 import DateParser from 'utils/parser'
 
@@ -11,7 +14,36 @@ interface Props {
 	game: IGame
 }
 
+function FormatArray(arr : any[]): ReactJSXElement[] {
+	return arr.map((element, index) =>
+	(index === arr.length -1 ? 
+		<a key={element.name} href={`/games/${element.slug}`} className='hover:text-neutral-500 duration-200'>{element.name}</a>
+		:
+		<a key={element.name} href={`/games/${element.slug}`}>
+			<span key={element.id} className='hover:text-neutral-500 duration-200'>{element.name}</span>
+			{', '}
+		</a>
+	)
+	)
+}
+
+function FormatPlat(arr : any[]): ReactJSXElement[] {
+	return arr.map((element, index) =>
+	(index === arr.length -1 ? 
+		<a key={element.name} href={`/games/${element.platform.slug}`} className='hover:text-neutral-500 duration-200'>{element.platform.name}</a>
+		:
+		<a key={element.name} href={`/games/${element.platform.slug}`}>
+			<span key={element.name} className='hover:text-neutral-500 duration-200'>{element.platform.name}</span>
+			{', '}
+		</a>
+	)
+	)
+}
+
 export default function GamePage({ game }: Props): ReactElement {
+	useEffect(() => {
+    document.title = game.name;
+  }, []);
 	const descr = <div dangerouslySetInnerHTML={{ __html: game.description }} />
 	return (
 		<div className='w-full'>
@@ -74,14 +106,60 @@ export default function GamePage({ game }: Props): ReactElement {
 									</button>
 								</div>
 								<Ratings rating={game.ratings} />
-								<h3 className='text-xl font-medium'>About</h3>
-								<div className='text-sm'>{descr}</div>
+								<h3 className='text-xl mb-1 font-medium'>About</h3>
+								<div className='text-sm mb-8'>{descr}</div>
+								<div className='flex flex-row flex-wrap justify-start'>
+									<div className='w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Plaform</p>
+										<div className='text-sm'>
+										{FormatPlat(game.platforms)}
+										</div>
+									</div>
+									{game.metacritic ?
+										<div className=' w-[50%] my-2'>
+											<p className='text-neutral-600 mb-2'>Metascore</p>
+											<p className='rounded border w-fit border-lime-500 px-1.5 text-sm font-medium text-lime-500'>
+												{game.metacritic}
+											</p>
+										</div> 
+										:
+										<div/>
+									}
+									<div className=' w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Genre</p>
+										<div className='text-sm duration-200'>
+											{FormatArray(game.genres)}
+										</div>
+									</div>
+									<div className=' w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Release Date</p>
+										<p className='text-sm'>{DateParser(game.released)}</p>
+									</div>
+									<div className=' w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Developer</p>
+										<div className='text-sm'>
+											{FormatArray(game.developers)}
+										</div>
+									</div>
+									<div className=' w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Publisher</p>
+										<div className='text-sm'>
+											{FormatArray(game.publishers)}
+										</div>
+									</div>
+									<div className=' w-[50%] my-2'>
+										<p className='text-neutral-600 mb-2'>Rating</p>
+										<p className='text-sm'>{game.esrb_rating.name}</p>
+									</div>
+								</div>
 							</div>
 						</section>
-						<section className='flex flex-row lg:w-[45%]'>
+						<section className='flex flex-col lg:w-[45%]'>
 							<div className='hidden lg:block'>
 								<Media game_id={game.slug} />
 							</div>
+								<p className='text-neutral-500 lg:text-start text-center lg:px-8 py-4 text-lg '>Where to buy</p>
+								<StoreButtons stores={game.stores} />
 						</section>
 					</div>
 				</div>

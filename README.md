@@ -38,14 +38,15 @@ I think the ideal development workflow, for a one person project like this, woul
 
 But, I know myself too well that maybe this project will never be fully finished, and my main intention with this projet, was to study and develop my client/front-end skills, so the only reason to start with the client development it's my *vaporware spirit*.
 
-Main Features 19/21:
+Main Features 21/22:
 
 - [x] Homepage
   - [x] Infinite Scrolling  
   - [x] Game Cards  
 - [x] Game page
   - [x] Screenshots
-  - [ ] Stores
+  - [x] Stores
+  - [x] Metadata
   - [x] Ratings
   - [x] Screenshot at the background
 - [x] Log in page

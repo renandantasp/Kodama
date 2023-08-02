@@ -40,11 +40,35 @@ export interface IGame {
 	platforms: IPlatGame[]
 	parent_platforms: IParentPlatGame[]
 	genres: IGenre[]
-	stores: unknown
+	developers : ICompany[]
+	publishers : ICompany[]
+	stores: IGameStore[]
 	clip: unknown
 	tags: unknown
-	esrb_rating: unknown
+	esrb_rating: {id:number, name:string, slug:string }
 	short_screenshots: unknown
+}
+
+export interface ICompany {
+	id : number
+	name : string
+	slug : string
+	games_count : number
+	image_background : string
+}
+
+export interface IGameStore {
+	id : number
+	store : IStore
+	url : string
+}
+export interface IStore {
+	id : number
+	name : string
+	slug : string
+	games_count : number
+	image_background : string
+	domain : string
 }
 
 export interface IRating {
