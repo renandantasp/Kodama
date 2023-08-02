@@ -13,7 +13,7 @@ import {
 } from 'react-icons/si'
 import { SlGlobe } from 'react-icons/sl'
 
-interface Properties {
+interface Props {
 	slugs: string[]
 }
 
@@ -34,7 +34,7 @@ interface Comps {
 	'commodore-amiga': undefined
 }
 
-export default function PlatformList({ slugs }: Properties): ReactElement {
+function PlatformList({ slugs }: Props): ReactElement {
 	const components: Comps = {
 		playstation: <SiPlaystation />,
 		nintendo: <SiNintendo />,
@@ -52,7 +52,7 @@ export default function PlatformList({ slugs }: Properties): ReactElement {
 		'commodore-amiga': undefined
 	}
 	return (
-		<div className='my-2 flex flex-row'>
+		<div className={`my-2 flex flex-row `}>
 			{slugs.map(slug => (
 				<div key={slug} className='mr-2'>
 					{components[slug as keyof Comps]}
@@ -61,3 +61,5 @@ export default function PlatformList({ slugs }: Properties): ReactElement {
 		</div>
 	)
 }
+
+export default PlatformList

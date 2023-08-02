@@ -6,6 +6,7 @@ import {
 	AiOutlineEllipsis,
 	AiOutlineMenu
 } from 'react-icons/ai'
+import Search from './search'
 
 export default function Navbar(): ReactElement {
 	const [open, setOpen] = useState(false)
@@ -20,15 +21,13 @@ export default function Navbar(): ReactElement {
 			>
 				K O D A M A
 			</a>
-			<input
-				className='ml-0 mr-3 w-[60%] rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition placeholder:text-neutral-100 hover:bg-white hover:text-black hover:opacity-100 placeholder:hover:text-neutral-800 focus:bg-white focus:text-black focus:opacity-100 focus:outline-none placeholder:focus:text-black lg:mx-6 lg:flex-1 lg:py-2'
-				placeholder='&#xF002;   Search for games'
-			/>
 
-			<div className='hidden transition duration-200 ease-in-out lg:flex'>
+			<Search />
+
+			<div className='hidden w-48 transition duration-200 ease-in-out lg:flex'>
 				<div className='flex items-center'>
 					<a className='mr-6 text-sm' href='/login'>
-						LOG IN
+						LOGIN
 					</a>
 					<a className='mr-6 text-sm' href='/signup'>
 						SIGNUP
@@ -38,6 +37,7 @@ export default function Navbar(): ReactElement {
 					</a>
 				</div>
 			</div>
+
 			<button
 				type='button'
 				onClick={onOpen}
@@ -45,6 +45,7 @@ export default function Navbar(): ReactElement {
 			>
 				<AiOutlineMenu />
 			</button>
+
 			<Modal
 				open={open}
 				onClose={onClose}
@@ -56,13 +57,13 @@ export default function Navbar(): ReactElement {
 					<div className='flex flex-row items-center justify-between rounded-t-lg bg-neutral-900 p-4'>
 						<a
 							href='/login'
-							className='mr-2 text-sm rounded-full text-black bg-white px-2 py-1'
+							className='mr-2 rounded-full bg-white px-2 py-1 text-sm text-black'
 						>
 							Log In
 						</a>
 						<a
 							href='/signup'
-							className='mr-2 text-sm rounded-full text-black bg-white px-2 py-1'
+							className='mr-2 rounded-full bg-white px-2 py-1 text-sm text-black'
 						>
 							Sign Up
 						</a>

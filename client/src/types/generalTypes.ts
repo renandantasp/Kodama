@@ -37,38 +37,38 @@ export interface IGame {
 	reviews_count: number
 	saturated_color: string
 	dominant_color: string
-	platforms: IPlatGame[]
-	parent_platforms: IParentPlatGame[]
+	platforms: IPlatGame[] | null
+	parent_platforms?: IParentPlatGame[]
 	genres: IGenre[]
-	developers : ICompany[]
-	publishers : ICompany[]
+	developers: ICompany[]
+	publishers: ICompany[]
 	stores: IGameStore[]
 	clip: unknown
 	tags: unknown
-	esrb_rating: {id:number, name:string, slug:string }
+	esrb_rating: { id: number; name: string; slug: string } | null
 	short_screenshots: unknown
 }
 
 export interface ICompany {
-	id : number
-	name : string
-	slug : string
-	games_count : number
-	image_background : string
+	id: number
+	name: string
+	slug: string
+	games_count: number
+	image_background: string
 }
 
 export interface IGameStore {
-	id : number
-	store : IStore
-	url : string
+	id: number
+	store: IStore
+	url: string
 }
 export interface IStore {
-	id : number
-	name : string
-	slug : string
-	games_count : number
-	image_background : string
-	domain : string
+	id: number
+	name: string
+	slug: string
+	games_count: number
+	image_background: string
+	domain: string
 }
 
 export interface IRating {
