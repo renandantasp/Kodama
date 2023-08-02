@@ -111,12 +111,12 @@ export default function GamePage({ game }: Props): ReactElement {
 								<div className='flex flex-row flex-wrap justify-start'>
 									<div className='w-[50%] my-2'>
 										<p className='text-neutral-600 mb-2'>Plaform</p>
-										<div className='text-sm'>
+										<div className='text-sm pr-4'>
 										{FormatPlat(game.platforms)}
 										</div>
 									</div>
 									{game.metacritic ?
-										<div className=' w-[50%] my-2'>
+										<div className=' w-[50%] my-4'>
 											<p className='text-neutral-600 mb-2'>Metascore</p>
 											<p className='rounded border w-fit border-lime-500 px-1.5 text-sm font-medium text-lime-500'>
 												{game.metacritic}
@@ -127,7 +127,7 @@ export default function GamePage({ game }: Props): ReactElement {
 									}
 									<div className=' w-[50%] my-2'>
 										<p className='text-neutral-600 mb-2'>Genre</p>
-										<div className='text-sm duration-200'>
+										<div className='text-sm pr-4 '>
 											{FormatArray(game.genres)}
 										</div>
 									</div>
@@ -137,13 +137,13 @@ export default function GamePage({ game }: Props): ReactElement {
 									</div>
 									<div className=' w-[50%] my-2'>
 										<p className='text-neutral-600 mb-2'>Developer</p>
-										<div className='text-sm'>
+										<div className='text-sm pr-4 '>
 											{FormatArray(game.developers)}
 										</div>
 									</div>
 									<div className=' w-[50%] my-2'>
 										<p className='text-neutral-600 mb-2'>Publisher</p>
-										<div className='text-sm'>
+										<div className='text-sm pr-4 ' >
 											{FormatArray(game.publishers)}
 										</div>
 									</div>
