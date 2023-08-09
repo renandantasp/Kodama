@@ -14,7 +14,7 @@ export default function Navbar(): ReactElement {
 	const onClose = (): void => setOpen(false)
 
 	return (
-		<div className='z-20 flex w-full items-center justify-between bg-transparent p-4 text-xs lg:p-10 lg:pt-8 lg:text-base'>
+		<div className='z-20 flex w-full items-center justify-between bg-transparent p-2 text-xs lg:p-10 lg:pt-8 lg:text-base'>
 			<a
 				href='/'
 				className='cursor-pointer select-none whitespace-nowrap font-black'
@@ -22,9 +22,11 @@ export default function Navbar(): ReactElement {
 				K O D A M A
 			</a>
 
-			<Search />
+			<div className='flex flex-row justify-center w-full'>
+				<Search />
+			</div>
 
-			<div className='hidden w-48 transition duration-200 ease-in-out lg:flex'>
+			<div className='h-full hidden w-48 transition duration-200 ease-in-out lg:flex'>
 				<div className='flex items-center'>
 					<a className='mr-6 text-sm' href='/login'>
 						LOGIN

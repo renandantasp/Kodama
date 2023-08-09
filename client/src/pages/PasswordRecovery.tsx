@@ -31,7 +31,7 @@ function PasswordRecovery(): ReactElement {
 					<input
 						type='email'
 						placeholder='Email'
-						className='mb-4 w-full rounded border-0 bg-neutral-900 p-2 text-neutral-100  placeholder:text-neutral-400 '
+						className='mb-4 w-full rounded border-0 bg-black p-2 text-neutral-100  placeholder:text-neutral-400 '
 					/>
 					<button
 						type='button'
@@ -45,8 +45,8 @@ function PasswordRecovery(): ReactElement {
 					alt={data?.results[0].name}
 					className='h-full absolute top-0 right-0 -z-10 h-[100vh] select-none object-cover object-top opacity-20'
 				/>
-				<div className='absolute top-0 right-0 -z-10 h-[100vh] w-1/2 bg-gradient-to-r from-neutral-800  bg-no-repeat' />
-				<div className='absolute top-0 left-0 -z-10 h-[100vh] w-1/2 bg-neutral-800  bg-no-repeat' />
+				<div className='absolute top-0 right-0 -z-10 h-[100vh] w-1/2 bg-gradient-to-r from-neutral-900  bg-no-repeat' />
+				<div className='absolute top-0 left-0 -z-10 h-[100vh] w-1/2 bg-neutral-900  bg-no-repeat' />
 			</div>
 		</div>
 	)

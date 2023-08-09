@@ -67,7 +67,7 @@ export default function Homepage(): ReactElement {
 						Based on player counts and release date
 					</h3>
 				</div>
-				<div className='lg:mb-48'>
+				<div className='lg:mb-48 lg:mr-8'>
 					{data?.pages.map((page, index) => (
 						<GameList key={page.results[index].id} games={page.results} />
 					))}

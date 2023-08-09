@@ -1,6 +1,6 @@
 import SearchGame from 'api/searchGame'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import GameSearchItem from './gameSearchItem'
 import Loading from './loading'
 
@@ -13,10 +13,10 @@ function Search(): ReactElement {
 
 	const { isLoading, data } = SearchGame(query)
 
-	const searchMode = query.length > 0 ? 'lg:rounded-b-sm ' : 'lg:rounded-full'
+	const searchMode = query.length > 0 ? 'lg:rounded-none ' : 'lg:rounded-full'
 
 	return (
-		<div className='z-50 w-[60%] lg:w-[80%] lg:pl-16'>
+		<div className='z-50 w-[60%] lg:w-[100%] lg:px-8'>
 			<input
 				className={`${searchMode} content:border-t ml-0 mr-3 w-full rounded-full bg-neutral-500 px-4 py-1.5 opacity-50 transition duration-300 
                 ease-in-out placeholder:text-neutral-100 hover:bg-black hover:text-white hover:opacity-100 placeholder:hover:text-neutral-500
@@ -26,7 +26,7 @@ function Search(): ReactElement {
 				onChange={onQueryChange}
 			/>
 			{query.length > 0 ? (
-				<div className='absolute left-0 w-[100%] rounded-b bg-black lg:left-auto lg:w-[73.25%]'>
+				<div className='absolute left-0 w-[100%] rounded-b bg-black lg:left-auto lg:w-[78.95%]'>
 					{isLoading ? (
 						<div className='h-32 flex flex-row justify-center py-8'>
 							<Loading />

@@ -14,18 +14,18 @@ interface Props {
 	game: IGame
 }
 
-function FormatArray(arr: any[]): ReactJSXElement[] {
+function FormatArray(path: string, arr: any[]): ReactJSXElement[] {
 	return arr.map((element, index) =>
 		index === arr.length - 1 ? (
 			<a
 				key={element.name}
-				href={`/games/${element.slug}`}
+				href={`/${path}/${element.slug}`}
 				className='duration-200 hover:text-neutral-500'
 			>
 				{element.name}
 			</a>
 		) : (
-			<a key={element.name} href={`/games/${element.slug}`}>
+			<a key={element.name} href={`/${path}/${element.slug}`}>
 				<span key={element.id} className='duration-200 hover:text-neutral-500'>
 					{element.name}
 				</span>
@@ -46,7 +46,7 @@ function FormatPlat(arr: any[]): ReactJSXElement[] {
 				{element.platform.name}
 			</a>
 		) : (
-			<a key={element.name} href={`/games/${element.platform.slug}`}>
+			<a key={element.name} href={`/platform/${element.platform.slug}`}>
 				<span
 					key={element.name}
 					className='duration-200 hover:text-neutral-500'
@@ -147,7 +147,7 @@ export default function GamePage({ game }: Props): ReactElement {
 									<div className=' my-2 w-[50%]'>
 										<p className='mb-2 text-neutral-600'>Genre</p>
 										<div className='pr-4 text-sm '>
-											{FormatArray(game.genres)}
+											{FormatArray('genre', game.genres)}
 										</div>
 									</div>
 									<div className=' my-2 w-[50%]'>
@@ -157,13 +157,13 @@ export default function GamePage({ game }: Props): ReactElement {
 									<div className=' my-2 w-[50%]'>
 										<p className='mb-2 text-neutral-600'>Developer</p>
 										<div className='pr-4 text-sm '>
-											{FormatArray(game.developers)}
+											{FormatArray('developer', game.developers)}
 										</div>
 									</div>
 									<div className=' my-2 w-[50%]'>
 										<p className='mb-2 text-neutral-600'>Publisher</p>
 										<div className='pr-4 text-sm '>
-											{FormatArray(game.publishers)}
+											{FormatArray('publisher', game.publishers)}
 										</div>
 									</div>
 									<div className=' my-2 w-[50%]'>
