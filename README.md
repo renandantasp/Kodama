@@ -6,7 +6,7 @@
 
 The primary idea of Kodama is building a frontend application that emulates a social media platform with features similar to [Letterboxd](https:letterboxd.com) and a UI/UX similar to [RAWG](https:rawg.io), utilizing the RAWG and HLTB APIs. The project is currently in development.
 
-There's a future idea about evolving Kodama to a fullstack application to persist data and to be actually useful and not just a frontend side project without any real application.
+There's a future idea about evolving Kodama to a fullstack application, to create reviews, lists and catalog played games and backlogs, to build something more than a just frontend side project without any real application.
 
 ---
 
@@ -20,14 +20,14 @@ At first view, the whole frontend stack idealized for Kodama could be viewed as 
 
 - For styling it'll be used Tailwind <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1200px-Tailwind_CSS_Logo.svg.png" style="width:18px"/> as a CSS framework  with a Prettier <img src="https://cdn.worldvectorlogo.com/logos/prettier-1.svg" style="width:18px"/> plugin that will sort classes with the intended tailwindcss class order.
 
-- The testing will be handled by Vitest <img src="https://seeklogo.com/images/V/vitest-logo-9ADDA575A5-seeklogo.com.png" style="width:18px"/> for unit and integration tests, and Cypress <img src="https://pics.freeicons.io/uploads/icons/png/3556671901536211770-512.png" style="width:18px"/> for e2e tests;
+<!-- - The testing will be handled by Vitest <img src="https://seeklogo.com/images/V/vitest-logo-9ADDA575A5-seeklogo.com.png" style="width:18px"/> for unit and integration tests, and Cypress <img src="https://pics.freeicons.io/uploads/icons/png/3556671901536211770-512.png" style="width:18px"/> for e2e tests; -->
 
-- The deploy will be done with Vercel <img src="https://i.pinimg.com/originals/c4/35/6c/c4356cd5454d06585e0a46066b555172.png" style="width:18px"/>. There is also the idea of using a vite plugin for Server Side Rendering for dealing with SEO.
+- The deploy will be done with Vercel <img src="https://i.pinimg.com/originals/c4/35/6c/c4356cd5454d06585e0a46066b555172.png" style="width:18px"/>. 
 
 ---
 <h1 style="display:flex; align-items: center;"> <img src="https://cdn-icons-png.flaticon.com/512/3171/3171906.png" style="width:40px; margin-right:8px"/> The Server (Back End) Stack</h1>
 
-At the moment the only idea is to build a server using nest js, prisma and mongodb/postgresdb, more will be added to this readme along with the progression of the design.
+I didn't find any services that hosts server that contains a free tier which also provides performance and a good support. And the most cost efficient alternative to this project necessities that I find was to use AWS lambda functions to perform the back end functionalities. In resume, build a full serverless server. And utilizing MongoDB as the Database.
 
 ---
 # Stages of the Development
@@ -38,7 +38,7 @@ I think the ideal development workflow, for a one person project like this, woul
 
 But, I know myself too well that maybe this project will never be fully finished, and my main intention with this projet, was to study and develop my client/front-end skills, so the only reason to start with the client development it's my *vaporware spirit*.
 
-Main Features 21/22:
+Main Features 22/22:
 
 - [x] Homepage
   - [x] Infinite Scrolling  
@@ -61,7 +61,7 @@ Main Features 21/22:
 - [x] Navbar
 - [x] Sidebar
 - [x] Resposivity
-- [ ] Search engine
+- [x] Search engine
 
 ## Stage 2 - Fully functional Back End accessible by API requests
 
