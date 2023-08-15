@@ -27,9 +27,22 @@ At first view, the whole frontend stack idealized for Kodama could be viewed as 
 ---
 <h1 style="display:flex; align-items: center;"> <img src="https://cdn-icons-png.flaticon.com/512/3171/3171906.png" style="width:40px; margin-right:8px"/> The Server (Back End) Stack</h1>
 
-I didn't find any services that hosts server that contains a free tier which also provides performance and a good support. And the most cost efficient alternative to this project necessities that I find was to use AWS lambda functions to perform the back end functionalities. In resume, build a full serverless server. And utilizing MongoDB as the Database.
+I study some ways to build the server for Kodama, each one has some advantages and disadantages and I'll talk about each one and why I discard/adopt them:
 
----
+
+
+### 1. NestJS <img src="https://seeklogo.com/images/N/nestjs-logo-09342F76C0-seeklogo.com.png" style="width:18px; margin-right:8px"/> + MongoDB <img src="https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png" style="height:18px"/>
+The nature of the database design for Kodama align pretty well with the features of MongoDB, and NestJS offers features like: the modular structure, built-in http framework from **Express**, typescript support and many other features. The proposed solution was appropriate for the problem, but when we discuss about deploying and pricing, the picture changes. The free alternatives for deploying, like Render offers a very slow connection that would slow down severely the application, and the paid option was services like AWS EC2, which can raise too much the cost for a free/hobby project. So we rejected the first idea of using NestJS+MongoDB;
+
+
+### 2. Pulumi <img src="https://www.pulumi.com/logos/brand/avatar-on-black.png" style="width:20px"/> + AWS Lambda <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Amazon_Lambda_architecture_logo.svg/2048px-Amazon_Lambda_architecture_logo.svg.png" style="height:18px"/> + MongoDB <img src="https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png" style="height:18px"/>
+
+As cost was an issue in the last idea, I search for something that would resolve this question. Using Pulumi and AWS Lambda as a backend service would be a lot more cost effective than deploying a server in an **EC2 Instance**, as I would pay for each access and the low traffic of the application would maintain a low price. The problem is that, as the traffic would be low, the **cold start** latency would be an issue, as each lambda function would have to setup an enviroment for database communication and any other feature. So we go back to a performance/latency problem.
+### 3. Firebase <img src="https://assets.stickpng.com/images/5847f40ecef1014c0b5e488a.png" style="height:20px"/>
+
+Finally I stumble across Firebase, which gives a solution for efficiency, authentication methods, rapid development, latency within a free tier.
+
+
 # Stages of the Development
 
 ## Stage 1 - Dummy Front-End
