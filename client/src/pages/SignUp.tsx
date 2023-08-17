@@ -1,10 +1,15 @@
 import GetRandomGame from 'api/getRandomGame'
 import Error from 'components/error'
 import Navbar from 'components/navbar'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import type { ReactElement } from 'react'
+import { useState } from 'react'
+import { auth } from 'utils/firebase'
 
 function SignUp(): ReactElement {
 	const { isLoading, error, data } = GetRandomGame()
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 
 	if (isLoading)
 		return (
@@ -14,7 +19,15 @@ function SignUp(): ReactElement {
 		)
 	if (error) return <Error />
 
-	// console.log(data?.results[0].background_image)
+	const signUp = e => {
+		e.preventDefault()
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(user => {
+				console.log(user)
+			})
+			.catch(error => console.log(error.message))
+	}
+
 	return (
 		<div>
 			<Navbar />
@@ -30,16 +43,21 @@ function SignUp(): ReactElement {
 					<input
 						type='email'
 						placeholder='Email'
+						value={email}
+						onChange={e => setEmail(e.target.value)}
 						className='mb-4 w-full rounded border-0 bg-black p-2 text-neutral-100  placeholder:text-neutral-400 '
 					/>
 					<input
 						type='password'
+						value={password}
+						onChange={e => setPassword(e.target.value)}
 						className='mb-4 w-full rounded border-0 bg-black p-2 text-neutral-100 placeholder:text-neutral-400 '
 						placeholder='Create a password'
 					/>
 
 					<button
-						type='button'
+						type='submit'
+						onClick={signUp}
 						className=' mb-6 w-full rounded bg-neutral-200 p-2 hover:bg-neutral-100 active:bg-neutral-300 '
 					>
 						<p className='text-neutral-900'>Sign up</p>

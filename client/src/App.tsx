@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import NotFound from 'components/notFound'
+import WriteReview from 'pages/userRoutes/WriteReview'
 import type { ReactElement } from 'react'
 import { lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import PrivateRoutes from 'utils/PrivateRoutes'
 
 const queryClient = new QueryClient()
 
@@ -11,7 +13,6 @@ const Game = lazy(async () => import('pages/Game'))
 const Login = lazy(async () => import('pages/Login'))
 const SignUp = lazy(async () => import('pages/SignUp'))
 const PasswordRecovery = lazy(async () => import('pages/PasswordRecovery'))
-// const DefaultLayout = lazy(async () => import('layouts/DefaultLayout'))
 
 export default function App(): ReactElement {
 	return (
@@ -23,6 +24,9 @@ export default function App(): ReactElement {
 					<Route path='/signup' element={<SignUp />} />
 					<Route path='/password_recovery' element={<PasswordRecovery />} />
 					<Route path='/games/:id' element={<Game />} />
+					<Route element={<PrivateRoutes/>}>
+						<Route element={<WriteReview/>} path="/write_review"/>
+					</Route>
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>

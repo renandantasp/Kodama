@@ -94,7 +94,7 @@ export default function Ratings({ rating }: Props): ReactElement {
 				>
 					<div className='flex flex-row justify-center'>
 						<AiOutlinePlus />
-						<p className='mx-3'>Write a review</p>
+						<a href='/write_review' className='mx-3'>Write a review</a>
 						<p>{rating.reduce((prev, current) => prev + current.count, 0)}</p>
 					</div>
 				</button>
