@@ -120,6 +120,7 @@ export interface IUser {
 	username: string
 	email: string | null
 	emailVerified: boolean
+	profileImage: string
 	reviews: string[]
 	lists: string[]
 	backlog: string[]

@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import NotFound from 'components/notFound'
 import { AuthProvider } from 'contexts/AuthContext'
+import ProfilePage from 'pages/userRoutes/ProfilePage'
 import WriteReview from 'pages/userRoutes/WriteReview'
 import type { ReactElement } from 'react'
 import { lazy } from 'react'
@@ -29,7 +30,7 @@ export default function App(): ReactElement {
 						</Route>
 						<Route path='/password_recovery' element={<PasswordRecovery />} />
 						<Route path='/games/:id' element={<Game />} />
-						<Route path='/@:id' element={<Homepage />} />
+						<Route path='/@:id' element={<ProfilePage />} />
 						<Route element={<PrivateRoutes />}>
 							<Route element={<WriteReview />} path='/write_review' />
 						</Route>
