@@ -1,15 +1,20 @@
+/* eslint-disable react/no-unescaped-entities */
 import GetRandomGame from 'api/getRandomGame'
 import Error from 'components/error'
-import Navbar from 'components/navbar'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import Navbar from 'components/navigation/navbar'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import { auth } from 'utils/firebase'
 
-function SignUp(): ReactElement {
+function Login(): ReactElement {
 	const { isLoading, error, data } = GetRandomGame()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const navigate = useNavigate()
+	const [visible, setVisible] = useState(false)
 
 	if (isLoading)
 		return (
@@ -19,13 +24,16 @@ function SignUp(): ReactElement {
 		)
 	if (error) return <Error />
 
-	const signUp = e => {
+	const signIn = e => {
 		e.preventDefault()
-		createUserWithEmailAndPassword(auth, email, password)
-			.then(user => {
-				console.log(user)
+		signInWithEmailAndPassword(auth, email, password)
+			.then(() => {
+				navigate('/')
 			})
-			.catch(error => console.log(error.message))
+			.catch(error => {
+				setPassword('')
+				setVisible(true)
+			})
 	}
 
 	return (
@@ -33,13 +41,20 @@ function SignUp(): ReactElement {
 			<Navbar />
 			<div className='flex justify-center'>
 				<div className='mx-8 flex flex-col items-center sm:w-full lg:mt-36 lg:w-[32rem]'>
-					<h1 className='mb-6 text-center text-4xl font-medium'>Sign up</h1>
-
-					<input
-						type='text'
-						placeholder='Username'
-						className='mb-4 w-full rounded border-0 bg-black p-2 text-neutral-100  placeholder:text-neutral-400 '
-					/>
+					<h1 className='mb-6 text-center text-4xl font-medium'>Log in</h1>
+					<div
+						className={`mb-4 ${
+							visible ? 'flex' : 'hidden'
+						} w-full flex-row justify-between rounded bg-red-800 p-1 text-center opacity-70`}
+					>
+						<p className='w-full text-red-200'>
+							{' '}
+							Sorry, your email or password was incorrect.
+						</p>
+						<button onClick={() => setVisible(false)}>
+							<AiFillCloseCircle />
+						</button>
+					</div>
 					<input
 						type='email'
 						placeholder='Email'
@@ -52,21 +67,28 @@ function SignUp(): ReactElement {
 						value={password}
 						onChange={e => setPassword(e.target.value)}
 						className='mb-4 w-full rounded border-0 bg-black p-2 text-neutral-100 placeholder:text-neutral-400 '
-						placeholder='Create a password'
+						placeholder='Password'
 					/>
 
 					<button
 						type='submit'
-						onClick={signUp}
+						onClick={signIn}
 						className=' mb-6 w-full rounded bg-neutral-200 p-2 hover:bg-neutral-100 active:bg-neutral-300 '
 					>
-						<p className='text-neutral-900'>Sign up</p>
+						<p className='text-neutral-900'>Log in</p>
 					</button>
 					<a
-						href='/login'
+						href='/auth/signup'
 						className='mb-2 w-fit text-sm underline duration-150 ease-in-out hover:text-neutral-300'
 					>
-						Already have an account? Log in.
+						Don't have an account? Sign up.
+					</a>
+					<a
+						href='/password_recovery'
+						className='w-fit text-sm underline duration-150 ease-in-out hover:text-neutral-300'
+					>
+						{' '}
+						Forgot your password?
 					</a>
 				</div>
 				<img
@@ -81,4 +103,4 @@ function SignUp(): ReactElement {
 	)
 }
 
-export default SignUp
+export default Login

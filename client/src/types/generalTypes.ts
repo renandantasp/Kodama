@@ -113,3 +113,22 @@ export interface IGenre {
 	games_count: number
 	image_background: string
 }
+
+export interface IUser {
+	uid: string | null
+	name: string
+	username: string
+	email: string | null
+	emailVerified: boolean
+	reviews: string[]
+	lists: string[]
+	backlog: string[]
+	played: string[]
+	followed: string[]
+	followers: string[]
+}
+
+export interface IContext {
+	isLoading: boolean
+	user: IUser | null
+}

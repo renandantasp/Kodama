@@ -1,10 +1,10 @@
 import type { ReactElement } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-function PrivateRoutes(): ReactElement {
+function AuthRoutes(): ReactElement {
 	const hasUser = localStorage.getItem('hasUser')
 
-	return hasUser === '1' ? <Outlet /> : <Navigate to='/auth/login' />
+	return hasUser !== '1' ? <Outlet /> : <Navigate to='/' />
 }
 
-export default PrivateRoutes
+export default AuthRoutes

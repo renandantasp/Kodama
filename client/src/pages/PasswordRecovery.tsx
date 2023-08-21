@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import GetRandomGame from 'api/getRandomGame'
 import Error from 'components/error'
-import Navbar from 'components/navbar'
+import Navbar from 'components/navigation/navbar'
 import type { ReactElement } from 'react'
 
 function PasswordRecovery(): ReactElement {

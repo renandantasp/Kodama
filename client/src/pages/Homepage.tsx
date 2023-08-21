@@ -3,13 +3,15 @@ import GetInifiniteGames from 'api/getInfiniteGames'
 import Error from 'components/error'
 import GameList from 'components/homepage/gameList'
 import Loading from 'components/loading'
-import Navbar from 'components/navbar'
-import Sidebar from 'components/sidebar'
+import Navbar from 'components/navigation/navbar'
+import Sidebar from 'components/navigation/sidebar'
+import { useAuth } from 'contexts/AuthContext'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
 
 export default function Homepage(): ReactElement {
 	const { data, fetchNextPage, hasNextPage, status } = GetInifiniteGames()
+	const { signOut } = useAuth()
 
 	const bars = (
 		<div>
@@ -57,12 +59,12 @@ export default function Homepage(): ReactElement {
 				<Navbar />
 				<Sidebar />
 			</div>
-
 			<div className='pt-4 lg:ml-64 lg:pt-4'>
 				<div className='mb-4 '>
 					<h1 className='mb-2 text-center text-3xl font-bold lg:text-start lg:text-6xl'>
 						New and trending
 					</h1>
+
 					<h3 className='text-center text-sm lg:text-start'>
 						Based on player counts and release date
 					</h3>
