@@ -5,7 +5,6 @@ import InfoModal from './infoModal'
 
 function NavbarRight(): ReactElement {
 	const { isLoading, user } = useAuth()
-	const hasUser = localStorage.getItem('hasUser')
 
 	if (isLoading) {
 		return <div />
