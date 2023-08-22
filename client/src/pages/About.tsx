@@ -8,14 +8,14 @@ function About(): ReactElement {
 	return (
 		<div>
 			<Navbar />
-			<div className='ml-40'>
-				<h1 className=' mt-10 text-6xl font-bold text-neutral-200'>
+			<div className='lg:ml-40'>
+				<h1 className=' mt-10 text-center text-2xl font-bold text-neutral-200 lg:text-start lg:text-6xl'>
 					Hi, I'm Renan! 👋
 				</h1>
-				<p className='my-6  items-center text-xl text-neutral-300'>
+				<p className='my-6  items-center text-center text-neutral-300 lg:text-start lg:text-xl'>
 					I'm the creator of KODAMA.
 				</p>
-				<p className='my-6  w-[40rem] text-neutral-300'>
+				<p className='my-6 px-3 text-center text-neutral-300 lg:w-[40rem] lg:px-0 lg:text-start'>
 					{' '}
 					KODAMA is a personal project built with the intention of developing
 					skills and test functionalities and features. The first idea was to
@@ -24,14 +24,14 @@ function About(): ReactElement {
 					video games.
 				</p>
 
-				<p className='my-6  w-[40rem] text-neutral-300'>
+				<p className='my-6 px-3 text-center text-neutral-300 lg:w-[40rem] lg:px-0 lg:text-start'>
 					{' '}
 					This project is not meant to work as a full fledged social media
 					website, even though the functionalities are being built day after
 					day, the idea is to learn, experiment and have fun.
 				</p>
 
-				<p className='my-6  w-[40rem] text-neutral-300'>
+				<p className='my-6 px-3 text-center text-neutral-300 lg:w-[40rem] lg:px-0 lg:text-start'>
 					{' '}
 					If you are interested in learn more about the development and the
 					ideas and technologies behind KODAMA, I suggest to check out{' '}
@@ -56,8 +56,11 @@ function About(): ReactElement {
 					!
 				</p>
 
-				<p className=' text-2xl font-bold'> Contact me:</p>
-				<div className='mt-4 flex flex-row text-2xl'>
+				<p className=' text-center text-2xl font-medium lg:text-start'>
+					{' '}
+					Contact me
+				</p>
+				<div className='mt-4 flex flex-row justify-center text-2xl lg:items-start lg:justify-start'>
 					<a
 						href='https://www.linkedin.com/in/renandnt/'
 						target='_blank'
