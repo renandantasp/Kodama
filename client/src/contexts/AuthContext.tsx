@@ -47,9 +47,10 @@ export function AuthProvider({ children }: Props): ReactElement {
 		return () => subscribe()
 	}, [])
 	const value = useMemo(
-		() => ({ isLoading, user: currentUser }),
+		() => ({ isLoading, user: currentUser, hasUser: currentUser !== null }),
 		[currentUser, isLoading]
 	)
+
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 

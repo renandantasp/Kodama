@@ -5,14 +5,11 @@ import GameList from 'components/homepage/gameList'
 import Loading from 'components/loading'
 import Navbar from 'components/navigation/navbar'
 import Sidebar from 'components/navigation/sidebar'
-import { useAuth } from 'contexts/AuthContext'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
 
 export default function Homepage(): ReactElement {
 	const { data, fetchNextPage, hasNextPage, status } = GetInifiniteGames()
-	const { signOut } = useAuth()
-
 	const bars = (
 		<div>
 			<Navbar />

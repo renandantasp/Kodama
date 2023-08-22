@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import NotFound from 'components/notFound'
 import { AuthProvider } from 'contexts/AuthContext'
+import InactivityTimeout from 'hooks/InactivityTimeout'
+import About from 'pages/About'
 import ProfilePage from 'pages/userRoutes/ProfilePage'
 import WriteReview from 'pages/userRoutes/WriteReview'
 import type { ReactElement } from 'react'
@@ -22,20 +24,23 @@ export default function App(): ReactElement {
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
 				<BrowserRouter>
-					<Routes>
-						<Route path='/' element={<Homepage />} />
-						<Route element={<AuthRoutes />}>
-							<Route path='/auth/login' element={<Login />} />
-							<Route path='/auth/signup' element={<SignUp />} />
-						</Route>
-						<Route path='/password_recovery' element={<PasswordRecovery />} />
-						<Route path='/games/:id' element={<Game />} />
-						<Route path='/@:id' element={<ProfilePage />} />
-						<Route element={<PrivateRoutes />}>
-							<Route element={<WriteReview />} path='/write_review' />
-						</Route>
-						<Route path='*' element={<NotFound />} />
-					</Routes>
+					<InactivityTimeout>
+						<Routes>
+							<Route path='/' element={<Homepage />} />
+							<Route element={<AuthRoutes />}>
+								<Route path='/auth/login' element={<Login />} />
+								<Route path='/auth/signup' element={<SignUp />} />
+							</Route>
+							<Route path='/password_recovery' element={<PasswordRecovery />} />
+							<Route path='/games/:id' element={<Game />} />
+							<Route path='/about' element={<About />} />
+							<Route path='/@:id' element={<ProfilePage />} />
+							<Route element={<PrivateRoutes />}>
+								<Route element={<WriteReview />} path='/write_review' />
+							</Route>
+							<Route path='*' element={<NotFound />} />
+						</Routes>
+					</InactivityTimeout>
 				</BrowserRouter>
 			</AuthProvider>
 		</QueryClientProvider>
