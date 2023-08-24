@@ -22,8 +22,8 @@ function About(): ReactElement {
 					build a front-end clone to develop some html/css skills, but it grew a
 					lot and today is kind of a social media app for discussing and sharing
 					video games.
-				</p>
 
+				</p>
 				<p className='my-6 px-3 text-center text-neutral-300 lg:w-[40rem] lg:px-0 lg:text-start'>
 					{' '}
 					This project is not meant to work as a full fledged social media

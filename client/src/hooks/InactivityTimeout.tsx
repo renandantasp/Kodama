@@ -28,7 +28,6 @@ export default function InactivityTimeout({ children }: Props): ReactElement {
 
 		function resetInactivityTimer(): void {
 			clearTimeout(inactivityTimer)
-			console.log('reset')
 			inactivityTimer = setTimeout(logOutUser, 30 * 60 * 1000)
 			localStorage.setItem('lastActivity', Date.now().toString())
 		}

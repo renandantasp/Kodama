@@ -1,4 +1,7 @@
-function DateParser(date: string): string {
+function DateParser(date: string | null): string {
+	if (date == null) {
+		return 'TBA'
+	}
 	const dateArr = date.split('-')
 
 	if (dateArr[1] === '01') return `Jan ${dateArr[2]}, ${dateArr[0]}`
@@ -12,7 +15,7 @@ function DateParser(date: string): string {
 	if (dateArr[1] === '09') return `Sep ${dateArr[2]}, ${dateArr[0]}`
 	if (dateArr[1] === '10') return `Oct ${dateArr[2]}, ${dateArr[0]}`
 	if (dateArr[1] === '11') return `Nov ${dateArr[2]}, ${dateArr[0]}`
-	return `DEC ${dateArr[2]}, ${dateArr[0]}`
+	return `Dec ${dateArr[2]}, ${dateArr[0]}`
 }
 
 export default DateParser

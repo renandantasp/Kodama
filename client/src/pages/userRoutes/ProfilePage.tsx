@@ -1,5 +1,6 @@
 import Loading from 'components/loading'
 import Navbar from 'components/navigation/navbar'
+import Sidebar from 'components/navigation/sidebar'
 import UserPage from 'components/userpage/UserPage'
 import { useAuth } from 'contexts/AuthContext'
 import { collection, getDocs, query, where } from 'firebase/firestore'
@@ -40,12 +41,12 @@ export default function ProfilePage(): ReactElement {
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}
-	console.log({ userProfile, editable, hasUser })
 
 	return (
 		<div className='h-screen'>
 			<Navbar />
-			{userProfile === undefined ? (
+			<Sidebar />
+			{userProfile === undefined || editable === undefined ? (
 				<div className='flex h-[90vh] items-center justify-center'>
 					<Loading />
 				</div>

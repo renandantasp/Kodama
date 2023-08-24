@@ -59,12 +59,12 @@ export default function Homepage(): ReactElement {
 			<div className='pt-4 lg:ml-64 lg:pt-4'>
 				<div className='mb-4 '>
 					<h1 className='mb-2 text-center text-3xl font-bold lg:text-start lg:text-6xl'>
-						New and trending
+						Latest updated games
 					</h1>
 
-					<h3 className='text-center text-sm lg:text-start'>
+					{/* <h3 className='text-center text-sm lg:text-start'>
 						Based on player counts and release date
-					</h3>
+					</h3> */}
 				</div>
 				<div className='lg:mb-48 lg:mr-8'>
 					{data?.pages.map((page, index) => (

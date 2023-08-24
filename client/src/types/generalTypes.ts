@@ -114,14 +114,22 @@ export interface IGenre {
 	image_background: string
 }
 
+export interface IBio {
+	description: string
+	birth: string
+	location: string
+	link: string
+}
+
 export interface IUser {
 	uid: string | null
 	name: string
 	username: string
 	email: string | null
 	emailVerified: boolean
+	bio: IBio
 	profileImage: string
-	reviews: string[]
+	essays: string[]
 	lists: string[]
 	backlog: string[]
 	played: string[]
