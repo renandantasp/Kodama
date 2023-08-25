@@ -4,7 +4,7 @@ import NavbarRight from './navbarRight'
 
 export default function Navbar(): ReactElement {
 	return (
-		<div className='z-20 flex w-full items-center justify-between bg-transparent p-2 text-xs lg:p-10 lg:pt-8 lg:text-base'>
+		<div className='z-20 flex w-full items-center justify-between bg-transparent py-4 px-6 text-xs lg:p-10 lg:pt-8 lg:text-base'>
 			<a
 				href='/'
 				className='cursor-pointer select-none whitespace-nowrap font-black'
@@ -12,7 +12,7 @@ export default function Navbar(): ReactElement {
 				K O D A M A
 			</a>
 
-			<div className='flex w-full flex-row justify-center'>
+			<div className='flex w-full flex-row justify-center '>
 				<Search />
 			</div>
 

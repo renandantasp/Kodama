@@ -16,7 +16,7 @@ function InfoModal({ children }: Props): ReactElement {
 			<button
 				type='button'
 				onClick={onOpen}
-				className='block transition duration-200 ease-in-out'
+				className='block transition duration-200 text-xl ease-in-out'
 			>
 				<AiOutlineMenu />
 			</button>
