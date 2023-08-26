@@ -20,7 +20,7 @@ export default function GameCard({ data }: Props): ReactElement {
 	}
 
 	return (
-		<div className='group my-4 w-[22em] rounded-lg bg-neutral-800 duration-300 ease-in-out hover:z-10 hover:rounded-b-none lg:w-[24rem] lg:rounded-b-lg lg:hover:scale-105'>
+		<div className='group my-4 w-[22em] rounded-lg bg-neutral-800 duration-300 ease-in-out hover:z-10 hover:rounded-b-none md:w-[18vw] lg:w-[19vw] lg:rounded-b-lg lg:hover:scale-105'>
 			<GameVideo game={game.name} img_game={game.background_image} />
 			<div className='p-4'>
 				<div className='flex items-center justify-between'>

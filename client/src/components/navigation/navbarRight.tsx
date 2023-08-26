@@ -21,7 +21,7 @@ function NavbarRight(): ReactElement {
 	return (
 		<div>
 			{user == null ? (
-				<div className='h-full flex w-[12rem] transition duration-200 ease-in-out'>
+				<div className='h-full flex transition duration-200 ease-in-out'>
 					<div className='flex items-center justify-end'>
 						<a
 							className='mr-4 hidden whitespace-nowrap text-sm lg:flex'
@@ -92,8 +92,8 @@ function NavbarRight(): ReactElement {
 					</a>
 					<div className='group mr-4 hidden text-2xl transition duration-300 ease-in-out lg:flex'>
 						<BiSolidBell />
-						<div className='absolute z-20 ml-2 -mt-1 flex h-[1.15rem] w-[1.15rem] items-center justify-center rounded-full bg-red-500 text-center text-xs'>
-							<p className='h-full w-full'>1</p>
+						<div className='absolute z-20 ml-[0.6rem] -mt-2 flex h-[1.17rem] w-[1.17rem] outline outline-2 outline-neutral-900 items-center justify-center rounded-full bg-red-500 text-center text-xs'>
+							<p className='h-full w-full'>9</p>
 						</div>
 						<div className='absolute -ml-16 mt-6 hidden w-40 flex-col justify-center rounded-lg bg-neutral-100 p-2 text-sm text-neutral-900  transition duration-300 ease-in-out group-hover:flex'>
 							<p className='my-0.5 mt-2 px-1 py-0.5 text-sm hover:bg-neutral-200 lg:mt-0'>
