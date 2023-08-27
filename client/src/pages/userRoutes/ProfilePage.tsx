@@ -53,7 +53,7 @@ export default function ProfilePage(): ReactElement {
 			) : (
 				<div>
 					{hasUser ? (
-						<UserPage user={userProfile} editable={editable} />
+						<UserPage pageUser={userProfile} editable={editable} />
 					) : (
 						<div className='flex h-[90vh] items-center justify-center'>
 							This user does not exist :/

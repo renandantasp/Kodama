@@ -127,6 +127,7 @@ export interface IUser {
 	username: string
 	email: string | null
 	emailVerified: boolean
+	notifications: INotification[]
 	bio: IBio
 	profileImage: string
 	essays: string[]
@@ -135,6 +136,14 @@ export interface IUser {
 	played: string[]
 	followed: string[]
 	followers: string[]
+}
+
+export interface INotification {
+	link: string
+	message: string
+	icon: number
+	seen: boolean
+	notifyTime: Date
 }
 
 export interface IContext {

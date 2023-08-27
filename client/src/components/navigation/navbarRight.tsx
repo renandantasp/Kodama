@@ -1,9 +1,10 @@
 import { useAuth } from 'contexts/AuthContext'
 import type { ReactElement } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { BiPlus, BiSolidBell } from 'react-icons/bi'
+import { BiPlus } from 'react-icons/bi'
 import { auth } from 'utils/firebase'
 import InfoModal from './infoModal'
+import NotifyBell from './notifyBell'
 
 function NavbarRight(): ReactElement {
 	const { isLoading, user } = useAuth()
@@ -91,15 +92,7 @@ function NavbarRight(): ReactElement {
 						/>
 					</a>
 					<div className='group mr-4 hidden text-2xl transition duration-300 ease-in-out lg:flex'>
-						<BiSolidBell />
-						<div className='absolute z-20 ml-[0.6rem] -mt-2 flex h-[1.17rem] w-[1.17rem] outline outline-2 outline-neutral-900 items-center justify-center rounded-full bg-red-500 text-center text-xs'>
-							<p className='h-full w-full'>9</p>
-						</div>
-						<div className='absolute -ml-16 mt-6 hidden w-40 flex-col justify-center rounded-lg bg-neutral-100 p-2 text-sm text-neutral-900  transition duration-300 ease-in-out group-hover:flex'>
-							<p className='my-0.5 mt-2 px-1 py-0.5 text-sm hover:bg-neutral-200 lg:mt-0'>
-								@someone started following you
-							</p>
-						</div>
+						<NotifyBell />
 					</div>
 					<div className='group mr-4 hidden text-3xl transition duration-300 ease-in-out lg:flex'>
 						<BiPlus />

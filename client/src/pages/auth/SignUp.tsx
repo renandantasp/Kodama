@@ -128,7 +128,8 @@ function SignUp(): ReactElement {
 					lists: [],
 					essays: [],
 					followers: [],
-					followed: []
+					followed: [],
+					notifications: []
 
 					// Add more fields here as needed
 				})
