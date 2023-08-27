@@ -1,7 +1,7 @@
 import Loading from 'components/loading'
 import Navbar from 'components/navigation/navbar'
 import Sidebar from 'components/navigation/sidebar'
-import UserPage from 'components/userpage/UserPage'
+import UserPage from 'components/userpage/userPage'
 import { useAuth } from 'contexts/AuthContext'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import type { ReactElement } from 'react'
@@ -29,7 +29,7 @@ export default function ProfilePage(): ReactElement {
 			} else {
 				querySnapshot.forEach(doc => {
 					setUserProfile(doc.data())
-					if (user !== null) {
+					if (user !== undefined) {
 						setEditable(userProfile.username === user.username)
 					}
 				})
@@ -37,7 +37,6 @@ export default function ProfilePage(): ReactElement {
 		}
 		GetUser()
 	}, [user])
-
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}

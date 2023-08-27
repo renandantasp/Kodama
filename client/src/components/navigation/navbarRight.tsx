@@ -156,8 +156,14 @@ function NavbarRight(): ReactElement {
 							<div className='flex flex-col rounded-b-lg bg-white p-4 text-neutral-900'>
 								<div className='mb-2 flex flex-col'>
 									<a
-										href='/'
+										href={`/@${user.username}/notifications`}
 										className='my-0.5 mt-2 px-1 py-0.5 text-sm hover:bg-neutral-200 lg:mt-0'
+									>
+										Notifications
+									</a>
+									<a
+										href='/'
+										className='my-0.5 px-1 py-0.5 text-sm hover:bg-neutral-200 lg:mt-0'
 									>
 										Games
 									</a>

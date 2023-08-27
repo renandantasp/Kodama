@@ -35,6 +35,7 @@ export default function App(): ReactElement {
 							<Route path='/games/:id' element={<Game />} />
 							<Route path='/about' element={<About />} />
 							<Route path='/@:id' element={<ProfilePage />} />
+							<Route path='/@:id/notifications' element={<ProfilePage />} />
 							<Route element={<PrivateRoutes />}>
 								<Route element={<WriteReview />} path='/write_review' />
 							</Route>

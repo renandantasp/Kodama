@@ -1,4 +1,5 @@
-function DateParser(date: string | null): string {
+/* eslint-disable import/prefer-default-export */
+export function ReleaseDateParser(date: string | null): string {
 	if (date == null) {
 		return 'TBA'
 	}
@@ -18,4 +19,44 @@ function DateParser(date: string | null): string {
 	return `Dec ${dateArr[2]}, ${dateArr[0]}`
 }
 
-export default DateParser
+export function DateSinceParser(date: Date): string {
+	const now = new Date()
+	const then = new Date(date.seconds * 1000)
+	const year = now.getFullYear() - then.getFullYear()
+	if (year > 0) {
+		if (year === 1) {
+			return '1 year ago'
+		}
+		return `${year} years ago`
+	}
+	const month = now.getMonth() - then.getMonth()
+	if (month > 0) {
+		if (month === 1) {
+			return '1 month ago'
+		}
+		return `${month} months ago`
+	}
+
+	const day = now.getDay() - then.getDay()
+	if (day > 0) {
+		if (day === 1) return '1 day ago'
+		if (day < 7) return `${day} days ago`
+		if (day < 13) return `1 week ago`
+		if (day < 20) return `2 weeks ago`
+		if (day < 30) return `3 weeks ago`
+	}
+
+	const hour = now.getHours() - then.getHours()
+	if (hour > 0) {
+		if (hour === 1) return '1 hour ago'
+		return `${hour} hours ago`
+	}
+
+	const minutes = now.getMinutes() - then.getMinutes()
+	if (minutes > 0) {
+		if (minutes === 1) return '1 minute ago'
+		return `${minutes} minutes ago`
+	}
+
+	return 'Just a while ago'
+}

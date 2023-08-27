@@ -2,13 +2,13 @@ import type { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import Media from 'components/id_page/media'
 import Ratings from 'components/id_page/ratings'
 import Navbar from 'components/navigation/navbar'
-import PlatformList from 'components/platformsList'
 import Sidebar from 'components/navigation/sidebar'
+import PlatformList from 'components/platformsList'
 import StoreButtons from 'components/storeButtons'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
 import type { IGame } from 'types/generalTypes'
-import DateParser from 'utils/parser'
+import { ReleaseDateParser } from 'utils/parser'
 
 interface Props {
 	game: IGame
@@ -78,7 +78,7 @@ export default function GamePage({ game }: Props): ReactElement {
 								</p>
 								<div className='flex flex-row  flex-wrap items-center justify-center text-[.9em] tracking-[.25em] lg:justify-start'>
 									<p className='mr-4 w-fit rounded bg-neutral-100 py-0.5 px-1 text-neutral-900'>
-										{DateParser(game.released).toUpperCase()}
+										{ReleaseDateParser(game.released).toUpperCase()}
 									</p>
 									<div className='mx-1 lg:text-lg'>
 										<PlatformList
@@ -103,25 +103,25 @@ export default function GamePage({ game }: Props): ReactElement {
 										className='mb-3 w-full rounded bg-neutral-100 p-2 px-4 text-start lg:mr-4 lg:w-[33%]'
 									>
 										<p className='text-[.9em] text-neutral-400'> Add to </p>
-										<p className='text-[1.5em] text-neutral-900'> My Games </p>
+										<p className='text-[1.5em] text-neutral-900'>Played</p>
 									</button>
 									<button
 										type='button'
 										className='mb-3 w-full rounded border p-2 px-4 text-start lg:mr-4 lg:w-[23%]'
 									>
 										<p className='text-[.9em] text-neutral-400'> Add to </p>
-										<p className='text-[1.5em]'> Wishlist </p>
+										<p className='text-[1.5em]'> Backlog </p>
 									</button>
 									<button
 										type='button'
 										className='mb-4 w-full  p-2 px-4 text-center lg:w-[23%]  lg:text-start'
 									>
-										<div className='flex flex-row justify-center lg:flex-col'>
+										{/* <div className='flex flex-row justify-center lg:flex-col'>
 											<p className='text-[1.5em] text-neutral-400 lg:text-[.9em]'>
 												Save to
 											</p>
 											<p className='ml-1 text-[1.5em] lg:ml-0'> Collection </p>
-										</div>
+										</div> */}
 									</button>
 								</div>
 								<Ratings rating={game.ratings} />

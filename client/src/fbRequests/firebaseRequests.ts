@@ -34,6 +34,29 @@ export async function Notify(
 	await updateDoc(userDocRef, { notifications: targetNotifs })
 }
 
+export async function SeeNotification(username: string): Promise<void> {
+	const userQuery = query(
+		collection(db, 'user'),
+		where('username', '==', username)
+	)
+	const userSnapshot = await getDocs(userQuery)
+	const userId = userSnapshot.docs[0].id
+
+	const userNotifs: INotification[] = userSnapshot.docs[0].data()
+		.notifications as INotification[]
+
+	const newNotifs = userNotifs.map((notif: INotification) => ({
+		...notif,
+		seen: true
+	}))
+	const userRef = doc(db, 'user', userId)
+	const userDocSnap = await getDoc(userRef)
+
+	if (userDocSnap.exists()) {
+		await updateDoc(userRef, { notifications: newNotifs })
+	}
+}
+
 export async function ToggleFollow(
 	userUsername: string | undefined,
 	targetUsername: string,
@@ -83,7 +106,7 @@ export async function ToggleFollow(
 
 	// userFollowed.followed.push(targetFollowing.username)
 	// console.log({ target: targetFollowing.followers, user: userFollowed.followed })
-	console.log({ target: targetFollowers, user: userFollowed })
+	// console.log({ target: targetFollowers, user: userFollowed })
 
 	if (userDocSnap.exists()) {
 		await updateDoc(userRef, { followed: userFollowed })

@@ -12,10 +12,15 @@ import type { IUser } from 'types/generalTypes'
 interface Props {
 	pageUser: IUser
 	editable: boolean
+	pageSetter: React.Dispatch<React.SetStateAction<string>>
 }
 
-function UserPage({ pageUser, editable }: Props): ReactElement {
-	const { isLoading, error, data } = GetRandomGame()
+function UserPageHeader({
+	pageUser,
+	editable,
+	pageSetter
+}: Props): ReactElement {
+	const { data } = GetRandomGame()
 	const { user } = useAuth()
 	const [isFollowing, setIsFollowing] = useState(false)
 	useEffect(() => {
@@ -108,27 +113,63 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 				<div className='mt-10 hidden flex-row items-center lg:flex'>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.played.length}</p>
-						<p className='text-neutral-400'>Played</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('played')}
+							className='text-neutral-400 hover:underline'
+						>
+							Played
+						</button>
 					</div>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.essays.length}</p>
-						<p className='text-neutral-400'>Essays</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('essays')}
+							className='text-neutral-400 hover:underline'
+						>
+							Essays
+						</button>
 					</div>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.lists.length}</p>
-						<p className='text-neutral-400'>Lists</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('lists')}
+							className='text-neutral-400 hover:underline'
+						>
+							Lists
+						</button>
 					</div>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.followers.length}</p>
-						<p className='text-neutral-400'>Followers</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('followers')}
+							className='text-neutral-400 hover:underline'
+						>
+							Followers
+						</button>
 					</div>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.followed.length}</p>
-						<p className='text-neutral-400'>Following</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('following')}
+							className='text-neutral-400 hover:underline'
+						>
+							Following
+						</button>
 					</div>
 					<div className='w-24 text-center'>
 						<p className='text-xl font-bold'>{pageUser.backlog.length}</p>
-						<p className='text-neutral-400'>Backlog</p>
+						<button
+							type='button'
+							onClick={() => pageSetter('backlog')}
+							className='text-neutral-400 hover:underline'
+						>
+							Backlog
+						</button>
 					</div>
 				</div>
 			</div>
@@ -142,4 +183,4 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 	)
 }
 
-export default UserPage
+export default UserPageHeader
