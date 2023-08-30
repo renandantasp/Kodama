@@ -29,7 +29,7 @@ function UserPageHeader({
 
 	return (
 		<div className='flex w-full flex-col items-center'>
-			<div className='flex flex-row items-start justify-between p-4 lg:ml-40 lg:w-[70vw]'>
+			<div className='flex flex-col items-center justify-between p-4 lg:ml-40 lg:w-[70vw]'>
 				<div className='flex flex-row  items-start justify-center lg:p-0'>
 					<div className=''>
 						<img
@@ -110,16 +110,86 @@ function UserPageHeader({
 						</div>
 					</div>
 				</div>
-				<div className='mt-10 hidden flex-row items-center lg:flex'>
-					<div className='w-24 border-r border-neutral-500 text-center'>
-						<p className='text-xl font-bold'>{pageUser.played.length}</p>
+				<div className='mt-10 text-xs lg:text-sm justify-start py-2 lg:justify-center overflow-x-scroll w-screen lg:w-full flex-row items-center flex'>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('home')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							HOME
+						</button>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row text-center'>
 						<button
 							type='button'
 							onClick={() => pageSetter('played')}
-							className='text-neutral-400 hover:underline'
+							className='text-neutral-200 hover:underline tracking-widest'
 						>
-							Played
+							PLAYED
 						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.played.length}</p>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('essays')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							ESSAYS
+						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.essays.length}</p>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('lists')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							LISTS
+						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.lists.length}</p>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('followers')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							FOLLOWERS
+						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.followers.length}</p>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('following')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							FOLLOWING
+						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.followed.length}</p>
+					</div>
+					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('backlog')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							BACKLOG
+						</button>
+						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.backlog.length}</p>
+					</div>
+					
+					{/* <div className='w-24 flex flex-row border-r border-neutral-500 text-center'>
+						<button
+							type='button'
+							onClick={() => pageSetter('played')}
+							className='text-neutral-200 hover:underline tracking-widest'
+						>
+							LISTS
+						</button>
+						<p className='text-xs text-neutral-400 font-bold'>{pageUser.lists.length}</p>
 					</div>
 					<div className='w-24 border-r border-neutral-500 text-center'>
 						<p className='text-xl font-bold'>{pageUser.essays.length}</p>
@@ -170,7 +240,7 @@ function UserPageHeader({
 						>
 							Backlog
 						</button>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<img
