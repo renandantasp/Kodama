@@ -5,8 +5,11 @@ import Navbar from 'components/navigation/navbar'
 import Sidebar from 'components/navigation/sidebar'
 import PlatformList from 'components/platformsList'
 import StoreButtons from 'components/storeButtons'
+import { useAuth } from 'contexts/AuthContext'
+import { ToggleBacklog, TogglePlayed } from 'fbRequests/firebaseRequests'
 import type { ReactElement } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { BiCheckCircle } from 'react-icons/bi'
 import type { IGame } from 'types/generalTypes'
 import { ReleaseDateParser } from 'utils/parser'
 
@@ -63,7 +66,24 @@ export default function GamePage({ game }: Props): ReactElement {
 	useEffect(() => {
 		document.title = game.name
 	}, [])
+
+	const { user } = useAuth()
 	const descr = <div dangerouslySetInnerHTML={{ __html: game.description }} />
+
+	const p = user === null ? false : user.played.includes(game.id)
+	const [played, setPlayed] = useState(p)
+
+	const b = user === null ? false : user.backlog.includes(game.id)
+	const [backlog, setBacklog] = useState(b)
+
+	useEffect(() => {
+		const p = user === null ? false : user.played.includes(game.id)
+		const b = user === null ? false : user.backlog.includes(game.id)
+
+		setPlayed(p)
+		setBacklog(b)
+	}, [user])
+
 	return (
 		<div className='w-full'>
 			<Navbar />
@@ -98,31 +118,86 @@ export default function GamePage({ game }: Props): ReactElement {
 							</div>
 							<div className='my-4 w-full lg:w-[90%]'>
 								<div className='mb-8 flex flex-col items-center  lg:flex-row lg:justify-start'>
-									<button
-										type='button'
-										className='mb-3 w-full rounded bg-neutral-100 p-2 px-4 text-start lg:mr-4 lg:w-[33%]'
-									>
-										<p className='text-[.9em] text-neutral-400'> Add to </p>
-										<p className='text-[1.5em] text-neutral-900'>Played</p>
-									</button>
-									<button
-										type='button'
-										className='mb-3 w-full rounded border p-2 px-4 text-start lg:mr-4 lg:w-[23%]'
-									>
-										<p className='text-[.9em] text-neutral-400'> Add to </p>
-										<p className='text-[1.5em]'> Backlog </p>
-									</button>
-									<button
-										type='button'
-										className='mb-4 w-full  p-2 px-4 text-center lg:w-[23%]  lg:text-start'
-									>
-										{/* <div className='flex flex-row justify-center lg:flex-col'>
-											<p className='text-[1.5em] text-neutral-400 lg:text-[.9em]'>
-												Save to
-											</p>
-											<p className='ml-1 text-[1.5em] lg:ml-0'> Collection </p>
-										</div> */}
-									</button>
+									{localStorage.getItem('hasUser') === '1' ? (
+										<div className='flex w-full items-center'>
+											<button
+												type='button'
+												onClick={async () =>
+													TogglePlayed(user.username, game.id, setPlayed)
+												}
+												className={`mb-3 w-full rounded p-2 px-4 text-start lg:mr-4 lg:w-[33%]  
+										${played === undefined ? 'hidden' : null}  ${
+													played ? 'bg-lime-500' : 'bg-neutral-200'
+												}`}
+											>
+												<div className={`${played ? 'hidden' : ''}`}>
+													<p className='text-[.9em] text-neutral-400 '>
+														{' '}
+														Add to{' '}
+													</p>
+													<p className='text-[1.5em] text-neutral-900'>
+														Played
+													</p>
+												</div>
+												<div
+													className={`flex flex-row items-center justify-center 
+											${!played ? 'hidden' : ''}`}
+												>
+													<div className='mr-1 text-xl text-neutral-200'>
+														<BiCheckCircle />
+													</div>
+													<p className='py-2 text-[1.5em] text-neutral-200'>
+														Played
+													</p>
+												</div>
+											</button>
+											<button
+												type='button'
+												onClick={async () =>
+													ToggleBacklog(user.username, game.id, setBacklog)
+												}
+												className={`${
+													backlog === undefined ? 'hidden' : null
+												} ${
+													backlog ? 'bg-lime-500' : 'outline outline-1'
+												}  mb-3 w-full rounded p-2 px-4 text-start lg:mr-4 lg:w-[23%]`}
+											>
+												{backlog ? (
+													<div className='flex flex-row items-center justify-center '>
+														<div className='mr-1 text-xl text-neutral-200'>
+															<BiCheckCircle />
+														</div>
+														<p className='py-2 text-[1.5em] text-neutral-200'>
+															Backlog
+														</p>
+													</div>
+												) : (
+													<div>
+														<p className='text-[.9em] text-neutral-400'>
+															{' '}
+															Add to{' '}
+														</p>
+														<p className='text-[1.5em]'> Backlog </p>
+													</div>
+												)}
+											</button>
+										</div>
+									) : (
+										<div>
+											<a
+												href='/auth/login'
+												className='mb-3 w-full rounded bg-neutral-200 p-2 px-6 text-start text-lg text-neutral-900 lg:mr-4 lg:w-[33%]'
+											>
+												Add to Played
+											</a>
+											<a
+												href='/auth/login'
+												className='mb-3 w-full rounded p-2 px-6 text-start text-lg outline outline-1 outline-neutral-200 lg:mr-4 lg:w-[33%]'
+											>
+												Add to Backlog
+											</a>
+										</div>
+									)}
 								</div>
 								<Ratings rating={game.ratings} />
 								<h3 className='mb-1 text-xl font-medium'>About</h3>
@@ -152,7 +227,9 @@ export default function GamePage({ game }: Props): ReactElement {
 									</div>
 									<div className=' my-2 w-[50%]'>
 										<p className='mb-2 text-neutral-600'>Release Date</p>
-										<p className='text-sm'>{DateParser(game.released)}</p>
+										<p className='text-sm'>
+											{ReleaseDateParser(game.released)}
+										</p>
 									</div>
 									<div className=' my-2 w-[50%]'>
 										<p className='mb-2 text-neutral-600'>Developer</p>

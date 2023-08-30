@@ -27,3 +27,23 @@
 input {
 	outline: transparent;
 }
+
+h1 {
+	font-size: xx-large;
+}
+h2 {
+	font-size: x-large;
+}
+h3 {
+	font-size: larger;
+}
+h3 {
+	font-size: large;
+}
+
+textarea:focus {
+	/* outline-width: 1px; */
+	/* outline-color: white; */
+	border: none;
+	outline: none;
+}

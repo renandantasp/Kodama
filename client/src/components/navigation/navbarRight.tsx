@@ -22,7 +22,7 @@ function NavbarRight(): ReactElement {
 	return (
 		<div>
 			{user == null ? (
-				<div className='h-full flex transition duration-200 ease-in-out'>
+				<div className='h-full z-20 flex transition duration-200 ease-in-out'>
 					<div className='flex items-center justify-end'>
 						<a
 							className='mr-4 hidden whitespace-nowrap text-sm lg:flex'
@@ -83,7 +83,7 @@ function NavbarRight(): ReactElement {
 					</div>
 				</div>
 			) : (
-				<div className='flex flex-row items-center justify-center '>
+				<div className='z-20 flex flex-row items-center justify-center '>
 					<a href={`/@${user.username}`} className='mr-4 w-8 lg:w-10'>
 						<img
 							src={user.profileImage}
@@ -111,7 +111,7 @@ function NavbarRight(): ReactElement {
 							</a>
 						</div>
 					</div>
-					<div className='group mr-4 hidden text-xl transition duration-300 ease-in-out lg:flex'>
+					<div className='group z-20 mr-4 hidden text-xl transition duration-300 ease-in-out lg:flex'>
 						<AiOutlineMenu />
 						<div className='absolute -ml-8 mt-5 hidden flex-col justify-center rounded-lg bg-neutral-100 p-4 text-sm text-neutral-900  transition duration-300 ease-in-out group-hover:flex'>
 							<div className='flex flex-col rounded-lg text-neutral-900'>

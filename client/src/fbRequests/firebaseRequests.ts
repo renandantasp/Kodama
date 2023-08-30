@@ -103,17 +103,62 @@ export async function ToggleFollow(
 			1
 		)
 	}
-
-	// userFollowed.followed.push(targetFollowing.username)
-	// console.log({ target: targetFollowing.followers, user: userFollowed.followed })
-	// console.log({ target: targetFollowers, user: userFollowed })
-
 	if (userDocSnap.exists()) {
 		await updateDoc(userRef, { followed: userFollowed })
 	}
 
 	if (targetDocSnap.exists()) {
 		await updateDoc(targetRef, { followers: targetFollowers })
+	}
+}
+
+export async function TogglePlayed(
+	username: string | undefined,
+	gameId: number,
+	setPlayed: React.Dispatch<React.SetStateAction<boolean>>
+): Promise<void> {
+	const q = query(collection(db, 'user'), where('username', '==', username))
+	const snapshot = await getDocs(q)
+	const { id } = snapshot.docs[0]
+	let userPlayed: number[] = snapshot.docs[0].data().played as number[]
+
+	if (userPlayed.includes(gameId)) {
+		userPlayed = userPlayed.filter(gid => gid !== gameId)
+		setPlayed(false)
+	} else {
+		userPlayed.push(gameId)
+		setPlayed(true)
+	}
+
+	const userRef = doc(db, 'user', id)
+	const userDocSnap = await getDoc(userRef)
+	if (userDocSnap.exists()) {
+		await updateDoc(userRef, { played: userPlayed })
+	}
+}
+
+export async function ToggleBacklog(
+	username: string | undefined,
+	gameId: number,
+	setPlayed: React.Dispatch<React.SetStateAction<boolean>>
+): Promise<void> {
+	const q = query(collection(db, 'user'), where('username', '==', username))
+	const snapshot = await getDocs(q)
+	const { id } = snapshot.docs[0]
+	let userBacklog: number[] = snapshot.docs[0].data().backlog as number[]
+
+	if (userBacklog.includes(gameId)) {
+		userBacklog = userBacklog.filter(gid => gid !== gameId)
+		setPlayed(false)
+	} else {
+		userBacklog.push(gameId)
+		setPlayed(true)
+	}
+
+	const userRef = doc(db, 'user', id)
+	const userDocSnap = await getDoc(userRef)
+	if (userDocSnap.exists()) {
+		await updateDoc(userRef, { backlog: userBacklog })
 	}
 }
 

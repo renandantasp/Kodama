@@ -24,16 +24,26 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 			/>
 			<div className='flex w-full flex-col items-center'>
 				<div className='flex flex-row items-start justify-between p-4 lg:ml-40 lg:w-[70vw]'>
-					{page === 'home' ? <p>{page} - home</p> : null}
-					{page === 'essays' ? <p>{page} - essays</p> : null}
-					{page === 'lists' ? <p>{page} - lists</p> : null}
-					{page === 'backlog' ? <p>{page} - backlog</p> : null}
-					{page === 'played' ? <p>{page} - played</p> : null}
+					{page === 'home' ? <p> home page still in development</p> : null}
+					{page === 'essays' ? <p>essays page still in development</p> : null}
+					{page === 'lists' ? <p>lists page still in development</p> : null}
+					{page === 'backlog' ? <p>backlog page still in development</p> : null}
+					{page === 'played' ? <p>played page still in development</p> : null}
 					{page === 'notifications' ? (
 						<Notification notifs={pageUser.notifications} />
 					) : null}
-					{page === 'following' ? <p>{page} - following</p> : null}
-					{page === 'followers' ? <p>{page} - followers</p> : null}
+					{page === 'following' ? (
+						<p>
+						following page still in development:
+						{pageUser.followed.map(follow => <p key={follow}>{follow}</p>)}
+					</p>
+					) : null}
+					{page === 'followers' ? (
+						<p>
+							followers page still in development:
+							{pageUser.followers.map(follow => <p key={follow}>{follow}</p>)}
+						</p>
+					) : null}
 				</div>
 			</div>
 		</div>
