@@ -40,7 +40,7 @@ The nature of the database design for Kodama align pretty well with the features
 As cost was an issue in the last idea, I search for something that would resolve this question. Using Pulumi and AWS Lambda as a backend service would be a lot more cost effective than deploying a server in an **EC2 Instance**, as I would pay for each access and the low traffic of the application would maintain a low price. The problem is that, as the traffic would be low, the **cold start** latency would be an issue, as each lambda function would have to setup an enviroment for database communication and any other feature. So we go back to a performance/latency problem.
 ### 3. Firebase <img src="https://assets.stickpng.com/images/5847f40ecef1014c0b5e488a.png" style="height:20px"/>
 
-Finally I stumble across Firebase, which gives a solution for efficiency, authentication methods, rapid development, latency within a free tier.
+Finally I stumbled across Firebase, which gives a solution for efficiency, authentication methods, rapid development, latency within a free tier.
 
 
 # Stages of the Development
@@ -76,10 +76,44 @@ Main Features 22/22:
 - [x] Resposivity
 - [x] Search engine
 
-## Stage 2 - Fully functional Back End accessible by API requests
+## Stage 2 - Firebase Integration and Defining Business Logic
 
-TBD
+## 1. Firebase Integration 
 
-## Stage 3 - Server-Client Integration
+I established two Firebase instances, one for development and one for production. I configured both with a email user **authentication** and a **FireStore** instance for storing the user's data.
 
-TBD
+## 2. Defining Business Logic
+
+The first step for defining the business logic was build some type of system/data design to attend some requirements:
+
+- [x] The user can create an account
+   - [x]  He can have an unique username
+   - [x]  He can select an image for his profile picture
+   - [-]  The user will receive an verification email for validate his account
+- [x]  The user can login
+   - [x] The user will be logged out after 30 minutes of inactivity
+   - [-] The user can redefine his password if he forgot
+-  [x] The user can follow another user
+-  [x] The user can be followed for another user
+   - [x] This would create a notification for the user
+- [x] The user can add games to his played list
+- [x] The user can add games to his backlog list
+- [-] The user can create essays 
+  - [-] The essays can be associated with some specific game or not
+  - [-] The user's followers would be notified of that
+- [-] The user can create lists
+  - [-] The user's followers would be notified of that
+- [x] The user will have a home page
+  - [x] The home page will include a view for played games
+  - [x] The home page will include a view for backlog games
+  - [x] The home page will include a view for notificaions
+  - [-] The home page will include a view for his following users
+  - [-] The home page will include a view for his followers
+  - [-] The home page will include a view for essays
+  - [-] The home page will include a view for lists games
+
+The checked requirements are already in production. Some of those requirements we'll discuss below.
+
+The image below displays the strategy that was used to define how the data would be organized:
+
+![diagrams for Kodama objects](/readme_imgs/KodamaData.png "Text to show on mouseover")

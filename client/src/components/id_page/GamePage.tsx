@@ -119,7 +119,7 @@ export default function GamePage({ game }: Props): ReactElement {
 							<div className='my-4 w-full lg:w-[90%]'>
 								<div className='mb-8 flex flex-col items-center  lg:flex-row lg:justify-start'>
 									{localStorage.getItem('hasUser') === '1' ? (
-										<div className='flex w-full items-center'>
+										<div className='flex w-full flex-col lg:flex-row items-center'>
 											<button
 												type='button'
 												onClick={async () =>
@@ -183,7 +183,7 @@ export default function GamePage({ game }: Props): ReactElement {
 											</button>
 										</div>
 									) : (
-										<div>
+										<div className='flex w-full flex-col lg:flex-row items-center whitespace-nowrap'>
 											<a
 												href='/auth/login'
 												className='mb-3 w-full rounded bg-neutral-200 p-2 px-6 text-start text-lg text-neutral-900 lg:mr-4 lg:w-[33%]'

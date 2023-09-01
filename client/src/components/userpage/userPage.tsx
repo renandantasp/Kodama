@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import { useState } from 'react'
 import type { IUser } from 'types/generalTypes'
 import BacklogSection from './backlogSection'
+import FollowingSection from './followingSection'
 import Notification from './notifications'
 import PlayedSection from './playedSection'
 import UserPageHeader from './userPageHeader'
@@ -34,14 +35,7 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 					{page === 'notifications' ? (
 						<Notification notifs={pageUser.notifications} />
 					) : null}
-					{page === 'following' ? (
-						<p>
-							following page still in development:
-							{pageUser.followed.map(follow => (
-								<p key={follow}>{follow}</p>
-							))}
-						</p>
-					) : null}
+					{page === 'following' ? <FollowingSection /> : null}
 					{page === 'followers' ? (
 						<p>
 							followers page still in development:

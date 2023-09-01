@@ -10,7 +10,7 @@ import {
 	updateDoc,
 	where
 } from 'firebase/firestore'
-import type { INotification } from 'types/generalTypes'
+import type { INotification, IUser } from 'types/generalTypes'
 import { db } from 'utils/firebase'
 
 export async function Notify(
@@ -187,6 +187,26 @@ export async function IsFollowing(
 	} else {
 		setIsFollowing(false)
 	}
+}
+
+interface Props {
+	ids: number[] | undefined
+	field: string
+}
+
+export async function GetListOf({ ids, field }: Props): Promise<IUser[]> {
+	console.log({ field })
+	if (ids === undefined) {
+		return []
+	}
+	console.log({ field })
+	const userRef = collection(db, 'user')
+
+	const query = query(userRef, where(field, 'array-contains-any', ids))
+
+	const userSnapshot = await getDocs(query)
+
+	userSnapshot.forEach(doc => console.log(doc.data()))
 }
 
 // const querySnapshot = await getDocs(q)
