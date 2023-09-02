@@ -29,7 +29,7 @@ export default function ProfilePage(): ReactElement {
 			} else {
 				querySnapshot.forEach(doc => {
 					setUserProfile(doc.data())
-					if (user !== undefined) {
+					if (user !== null) {
 						setEditable(userProfile.username === user.username)
 					}
 				})

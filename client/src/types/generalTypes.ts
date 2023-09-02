@@ -134,8 +134,8 @@ export interface IUser {
 	lists: string[]
 	backlog: string[]
 	played: string[]
-	followed: number[]
-	followers: number[]
+	followed: [string]
+	followers: [string]
 }
 
 export interface INotification {

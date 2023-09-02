@@ -8,21 +8,21 @@ interface Props {
 	user: Iuser
 }
 
-function FollowingSection({ user }: Props): ReactElement {
+function FollowerSection({ user }: Props): ReactElement {
 	const [users, setUsers] = useState()
 	useEffect(() => {
-		async function GetFollowing(): Promise<void> {
-			const u = await GetListOf(user.followed, 'user')
+		async function GetFollower(): Promise<void> {
+			const u = await GetListOf(user.followers, 'user')
 			setUsers(u)
 		}
-		GetFollowing()
+		GetFollower()
 	}, [])
 	// console.log(users)
 	return (
 		<div>
-			<p className='text-center text-4xl font-bold lg:text-start'>Following</p>
+			<p className='text-center text-4xl font-bold lg:text-start'>Followers</p>
 			{users == null ? (
-				<div className='w-full py-10 flex justify-center'>
+				<div className='flex w-full justify-center py-10'>
 					<Loading />
 				</div>
 			) : (
@@ -36,4 +36,4 @@ function FollowingSection({ user }: Props): ReactElement {
 	)
 }
 
-export default FollowingSection
+export default FollowerSection

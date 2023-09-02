@@ -189,24 +189,19 @@ export async function IsFollowing(
 	}
 }
 
-interface Props {
-	ids: number[] | undefined
-	field: string
-}
-
-export async function GetListOf({ ids, field }: Props): Promise<IUser[]> {
-	console.log({ field })
+export async function GetListOf(ids: string[], coll: string): Promise<IUser[]> {
+	const elements: IUser[] = []
+	console.log(ids)
 	if (ids === undefined) {
-		return []
+		return elements
 	}
-	console.log({ field })
-	const userRef = collection(db, 'user')
 
-	const query = query(userRef, where(field, 'array-contains-any', ids))
-
-	const userSnapshot = await getDocs(query)
-
-	userSnapshot.forEach(doc => console.log(doc.data()))
+	const userRef = collection(db, coll)
+	const qSnapshot = await getDocs(userRef)
+	qSnapshot.forEach(doc => {
+		if (ids.includes(doc.id)) {
+			elements.push(doc.data())
+		}
+	})
+	return elements
 }
-
-// const querySnapshot = await getDocs(q)

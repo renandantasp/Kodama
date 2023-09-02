@@ -110,7 +110,7 @@ function UserPageHeader({
 						</div>
 					</div>
 				</div>
-				<div className='mt-10 text-xs lg:text-sm justify-start py-2 lg:justify-center overflow-x-scroll w-screen lg:w-full flex-row items-center flex'>
+				<div className='mt-10 text-xs lg:text-sm justify-start py-6  lg:justify-center overflow-x-scroll w-screen lg:w-full flex-row items-center flex'>
 					<div className='mx-4 lg:mx-6 justify-center flex flex-row text-center'>
 						<button
 							type='button'
