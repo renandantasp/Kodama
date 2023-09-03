@@ -1,5 +1,6 @@
-import { Checkbox } from '@mui/material'
 import Navbar from 'components/navigation/navbar'
+import RatingButton from 'components/ratingButton'
+import SearchGameEssay from 'components/searchGameEssay'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
@@ -9,33 +10,76 @@ function WriteReview(): ReactElement {
 	const [title, setTitle] = useState('')
 	const [isPreview, setIsPreview] = useState(false)
 	const [gameEssay, setGameEssay] = useState(false)
-	console.log(gameEssay)
-	const [rating, setRating] = useState(0)
+	const [rating, setRating] = useState(1)
 	const [gameId, setGameId] = useState('')
+	const checkboxColor = {
+		main: '#fff',
+		light: '#aaa',
+		dark: '#fff',
+		contrastText: '#fff'
+	}
+
 	return (
 		<div>
 			<Navbar />
 			<div className='flex w-full flex-col items-center justify-center px-10'>
-				<p className='mb-10 mt-4 text-center text-5xl font-bold'>
-					Write your Essay!
+				<p className='mb-10 mt-4 text-center text-3xl font-bold'>
+					Write your Essay!{' '}
+					<span className='text-neutral-500'>Still in development</span>
 				</p>
 				<div className='flex w-full flex-col items-center justify-center'>
 					<input
-						placeholder='Title'
+						placeholder='My New Essay'
 						value={title}
-						className='mb-4 w-full rounded bg-neutral-800 p-3 font-medium text-neutral-200 outline outline-1 outline-neutral-500 placeholder:text-neutral-500 lg:w-[50vw]'
+						className='mb-4 w-full rounded-t border-b border-neutral-600 bg-neutral-900 p-5 pb-1 pl-3 text-2xl font-medium text-neutral-200 placeholder:text-neutral-500 lg:w-[50vw]'
 						onChange={e => setTitle(e.target.value)}
 					/>
-					<div className='mb-8 w-full rounded bg-neutral-800 p-3 outline outline-1 outline-neutral-500 lg:w-[50vw]'>
-						<p className='lg:text-md text-xs '>Is this a Game Essay?</p>
-						<Checkbox
-							value={gameEssay}
-							color="info"
-							onClick={() => setGameEssay(!gameEssay)}
-						/>
-
-						<p className='lg:text-md text-xs '>Select the Game</p>
-						<p className='lg:text-md text-xs '>Rating</p>
+					<div className='my-6 w-full rounded bg-neutral-900 lg:w-[50vw]'>
+						<div className='flex flex-row items-center'>
+							<button
+								type='button'
+								onClick={() => setGameEssay(!gameEssay)}
+								className={`rounded-full p-1 px-2 text-sm ${
+									gameEssay
+										? 'bg-white text-neutral-900'
+										: 'outline outline-1 outline-neutral-500'
+								}`}
+							>
+								{gameEssay ? 'Game Essay' : 'Generic Essay'}
+							</button>
+						</div>
+						{gameEssay ? (
+							<div>
+								<SearchGameEssay />
+								<div className='flex flex-row'>
+									<RatingButton
+										value={rating}
+										activation={1}
+										actFunction={setRating}
+									/>
+									<RatingButton
+										value={rating}
+										activation={3}
+										actFunction={setRating}
+									/>
+									<RatingButton
+										value={rating}
+										activation={5}
+										actFunction={setRating}
+									/>
+									<RatingButton
+										value={rating}
+										activation={7}
+										actFunction={setRating}
+									/>
+									<RatingButton
+										value={rating}
+										activation={9}
+										actFunction={setRating}
+									/>
+								</div>
+							</div>
+						) : null}
 					</div>
 					<div className='mb-0 flex w-full flex-row items-start lg:w-[50vw]'>
 						<button
@@ -65,34 +109,17 @@ function WriteReview(): ReactElement {
 						<textarea
 							className={`mt-0 h-[70vh] ${
 								isPreview ? 'hidden' : ''
-							} w-full rounded-r rounded-b bg-neutral-800 text-neutral-200 outline-0`}
+							} w-full rounded-r rounded-b border-0 bg-neutral-900 text-neutral-200 outline outline-1 outline-neutral-700 focus:ring-1 focus:ring-neutral-700`}
 							onChange={e => setEssayText(e.target.value)}
 							value={essayText}
 						/>
 						<div
 							className={`${
 								isPreview ? '' : 'hidden'
-							} h-[70vh] w-full rounded-r rounded-b bg-neutral-800 p-3 text-neutral-200 outline outline-1 outline-neutral-500`}
+							} h-[70vh] w-full rounded-r rounded-b bg-neutral-900 p-3 text-neutral-200 outline outline-1 outline-neutral-700`}
 						>
 							<ReactMarkdown>{essayText}</ReactMarkdown>
 						</div>
-					</div>
-				</div>
-				<div className=' hidden w-full flex-row justify-center'>
-					<div className='flex flex-col'>
-						<input
-							placeholder='Title'
-							className='mr-10 mb-2 rounded bg-neutral-800 p-2 text-neutral-200 outline outline-1 outline-neutral-500'
-							onChange={e => setTitle(e.target.value)}
-						/>
-						<textarea
-							className='mr-10 h-[70vh] w-[30vw] rounded bg-neutral-800 text-neutral-200 outline-0'
-							onChange={e => setEssayText(e.target.value)}
-							value={essayText}
-						/>
-					</div>
-					<div className='h-[70vh] w-[30vw] rounded bg-neutral-800'>
-						<ReactMarkdown>{essayText}</ReactMarkdown>
 					</div>
 				</div>
 			</div>
