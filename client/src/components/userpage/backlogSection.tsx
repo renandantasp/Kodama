@@ -12,7 +12,7 @@ function BacklogSection({ user }: Props): ReactElement {
 			<p className='text-center text-4xl font-bold lg:text-start'>
 				Backlog Games
 			</p>
-			<div className='mt-4 flex flex-col lg:flex-row'>
+			<div className='mt-4 flex flex-col flex-wrap lg:flex-row'>
 				{user.backlog.map(gameId => (
 					<SimpleGameCard gameId={gameId} />
 				))}
