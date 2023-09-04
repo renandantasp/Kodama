@@ -10,7 +10,7 @@ interface Props {
 function FollowCard({ user }: Props): ReactElement {
 	return (
 		<div className='m-2 flex flex-col flex-wrap items-center justify-between lg:mr-6 lg:flex-row lg:items-start'>
-			<div className='mb-3 flex w-[80vw] flex-row rounded-lg bg-neutral-800 p-2 duration-300 ease-in-out hover:scale-110 lg:w-[15vw]'>
+			<div className='mb-3 flex w-[80vw] flex-row rounded-lg bg-neutral-800 p-2 duration-300 ease-in-out hover:scale-110 lg:w-fit'>
 				<img
 					src={user.profileImage}
 					alt={user.name}

@@ -13,7 +13,7 @@ export default function ProfilePage(): ReactElement {
 	const params = useParams()
 	const { user } = useAuth()
 	const [userProfile, setUserProfile] = useState()
-	const [editable, setEditable] = useState()
+	const [editable, setEditable] = useState(false)
 	const [hasUser, setHasUser] = useState(true)
 
 	useEffect(() => {
@@ -40,7 +40,7 @@ export default function ProfilePage(): ReactElement {
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}
-
+	console.log({ userProfile, editable })
 	return (
 		<div className='h-screen'>
 			<Navbar />
@@ -54,8 +54,8 @@ export default function ProfilePage(): ReactElement {
 					{hasUser ? (
 						<UserPage pageUser={userProfile} editable={editable} />
 					) : (
-						<div className='flex h-[90vh] items-center justify-center'>
-							This user does not exist :/
+						<div className='flex h-[90vh] items-center justify-center text-3xl font-medium'>
+							This user does not exist
 						</div>
 					)}
 				</div>

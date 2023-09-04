@@ -31,14 +31,13 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 					{page === 'home' ? <div> home page still in development</div> : null}
 					{page === 'essays' ? <p>essays page still in development</p> : null}
 					{page === 'lists' ? <p>lists page still in development</p> : null}
-					{page === 'played' ? <PlayedSection /> : null}
-					{page === 'backlog' ? <BacklogSection /> : null}
+					{page === 'played' ? <PlayedSection user={pageUser} /> : null}
+					{page === 'backlog' ? <BacklogSection user={pageUser} /> : null}
 					{page === 'notifications' ? (
 						<Notification notifs={pageUser.notifications} />
 					) : null}
 					{page === 'following' ? <FollowingSection user={pageUser} /> : null}
-					{page === 'followers' ? (<FollowerSection user={pageUser} />
-					) : null}
+					{page === 'followers' ? <FollowerSection user={pageUser} /> : null}
 				</div>
 			</div>
 		</div>

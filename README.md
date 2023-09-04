@@ -92,7 +92,7 @@ The first step for defining the business logic was build some type of system/dat
    - [-]  The user will receive an verification email for validate his account
 - [x]  The user can login
    - [x] The user will be logged out after 30 minutes of inactivity
-   - [-] The user can redefine his password if he forgot
+   - [-] The user can redefine his password if he forgets
 -  [x] The user can follow another user
 -  [x] The user can be followed for another user
    - [x] This would create a notification for the user
@@ -107,8 +107,8 @@ The first step for defining the business logic was build some type of system/dat
   - [x] The home page will include a view for played games
   - [x] The home page will include a view for backlog games
   - [x] The home page will include a view for notificaions
-  - [-] The home page will include a view for his following users
-  - [-] The home page will include a view for his followers
+  - [x] The home page will include a view for his following users
+  - [x] The home page will include a view for his followers
   - [-] The home page will include a view for essays
   - [-] The home page will include a view for lists games
 

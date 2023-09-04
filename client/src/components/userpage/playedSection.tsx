@@ -1,15 +1,19 @@
-import { useAuth } from 'contexts/AuthContext'
 import type { ReactElement } from 'react'
+import type { IUser } from 'types/generalTypes'
 import SimpleGameCard from './simpleGameCard'
 
-function PlayedSection(): ReactElement {
-	const { user } = useAuth()
+interface Props {
+	user: IUser
+}
 
+function PlayedSection({ user }: Props): ReactElement {
 	return (
 		<div>
-			<p className='text-4xl text-center lg:text-start font-bold'>Played Games</p>
-			<div className='mt-4 flex flex-col lg:flex-row'>
-				{user?.played.map(gameId => (
+			<p className='text-center text-4xl font-bold lg:text-start'>
+				Played Games
+			</p>
+			<div className='mt-4 flex flex-col lg:flex-row flex-wrap'>
+				{user.played.map(gameId => (
 					<SimpleGameCard gameId={gameId} />
 				))}
 			</div>

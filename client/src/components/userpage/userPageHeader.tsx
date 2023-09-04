@@ -46,12 +46,13 @@ function UserPageHeader({
 									<div className='rounded-full bg-neutral-200 p-1 text-neutral-900'>
 										<AiFillEdit />
 									</div>
-								) : (
+								) : null}
+								{user !== null && !editable ? (
 									<button
 										type='button'
 										onClick={async () =>
 											ToggleFollow(
-												user?.username,
+												user.username,
 												pageUser.username,
 												setIsFollowing
 											)
@@ -73,6 +74,16 @@ function UserPageHeader({
 											</div>
 										)}
 									</button>
+								) : (
+									<a
+										href='/auth/login'
+										className='flex flex-row items-center rounded-full bg-neutral-200 p-1 px-1.5 text-sm text-neutral-900 hover:bg-neutral-100 active:bg-neutral-300'
+									>
+										<span className='flex flex-row items-center'>
+											<SlUserFollow />
+											<span>Follow</span>
+										</span>
+									</a>
 								)}
 							</div>
 							<p className='text-lg text-neutral-400'>@{pageUser.username}</p>
@@ -110,77 +121,89 @@ function UserPageHeader({
 						</div>
 					</div>
 				</div>
-				<div className='mt-10 text-xs lg:text-sm justify-start py-6  lg:justify-center overflow-x-scroll w-screen lg:w-full flex-row items-center flex'>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row text-center'>
+				<div className='mt-10 flex w-screen flex-row items-center  justify-start overflow-x-scroll py-6 text-xs lg:w-full lg:justify-center lg:text-sm'>
+					<div className='mx-4 flex flex-row justify-center text-center lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('home')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							HOME
 						</button>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('played')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							PLAYED
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.played.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.played.length}
+						</p>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center  lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('essays')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							ESSAYS
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.essays.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.essays.length}
+						</p>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center  lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('lists')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							LISTS
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.lists.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.lists.length}
+						</p>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center  lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('followers')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							FOLLOWERS
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.followers.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.followers.length}
+						</p>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center  lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('following')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							FOLLOWING
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.followed.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.followed.length}
+						</p>
 					</div>
-					<div className='mx-4 lg:mx-6 justify-center flex flex-row  text-center'>
+					<div className='mx-4 flex flex-row justify-center text-center  lg:mx-6'>
 						<button
 							type='button'
 							onClick={() => pageSetter('backlog')}
-							className='text-neutral-200 hover:underline tracking-widest'
+							className='tracking-widest text-neutral-200 hover:underline'
 						>
 							BACKLOG
 						</button>
-						<p className='text-xs ml-1 text-neutral-400 font-bold'>{pageUser.backlog.length}</p>
+						<p className='ml-1 text-xs font-bold text-neutral-400'>
+							{pageUser.backlog.length}
+						</p>
 					</div>
-					
+
 					{/* <div className='w-24 flex flex-row border-r border-neutral-500 text-center'>
 						<button
 							type='button'

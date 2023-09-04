@@ -1,15 +1,19 @@
-import { useAuth } from 'contexts/AuthContext'
 import type { ReactElement } from 'react'
+import type { IUser } from 'types/generalTypes'
 import SimpleGameCard from './simpleGameCard'
 
-function PlayedSection(): ReactElement {
-	const { user } = useAuth()
+interface Props {
+	user: IUser
+}
 
+function BacklogSection({ user }: Props): ReactElement {
 	return (
 		<div>
-			<p className='text-4xl text-center lg:text-start font-bold'>Backlog Games</p>
+			<p className='text-center text-4xl font-bold lg:text-start'>
+				Backlog Games
+			</p>
 			<div className='mt-4 flex flex-col lg:flex-row'>
-				{user?.backlog.map(gameId => (
+				{user.backlog.map(gameId => (
 					<SimpleGameCard gameId={gameId} />
 				))}
 			</div>
@@ -17,4 +21,4 @@ function PlayedSection(): ReactElement {
 	)
 }
 
-export default PlayedSection
+export default BacklogSection
