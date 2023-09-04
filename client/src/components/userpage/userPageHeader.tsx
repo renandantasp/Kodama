@@ -42,11 +42,23 @@ function UserPageHeader({
 						<div className='mb-2 flex flex-col'>
 							<div className='mt-4 flex flex-row items-center'>
 								<p className='mr-3 text-4xl font-bold'>{pageUser.name}</p>
+
 								{editable ? (
 									<div className='rounded-full bg-neutral-200 p-1 text-neutral-900'>
 										<AiFillEdit />
 									</div>
 								) : null}
+								{user === null ? (
+									<a
+										href='/auth/login'
+										className='flex flex-row items-center rounded-full bg-neutral-200 p-1 px-1.5 text-sm text-neutral-900 hover:bg-neutral-100 active:bg-neutral-300'
+									>
+										<span className='flex flex-row items-center'>
+											<SlUserFollow />
+											<span>Follow</span>
+										</span>
+									</a>
+								):null}
 								{user !== null && !editable ? (
 									<button
 										type='button'
@@ -74,17 +86,7 @@ function UserPageHeader({
 											</div>
 										)}
 									</button>
-								) : (
-									<a
-										href='/auth/login'
-										className='flex flex-row items-center rounded-full bg-neutral-200 p-1 px-1.5 text-sm text-neutral-900 hover:bg-neutral-100 active:bg-neutral-300'
-									>
-										<span className='flex flex-row items-center'>
-											<SlUserFollow />
-											<span>Follow</span>
-										</span>
-									</a>
-								)}
+								) : null}
 							</div>
 							<p className='text-lg text-neutral-400'>@{pageUser.username}</p>
 							<p className='font-sm mr-2 mt-2 italic text-neutral-400'>
