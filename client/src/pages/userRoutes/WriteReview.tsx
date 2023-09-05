@@ -1,23 +1,55 @@
 import Navbar from 'components/navigation/navbar'
 import RatingButton from 'components/ratingButton'
 import SearchGameEssay from 'components/searchGameEssay'
+import { useAuth } from 'contexts/AuthContext'
+import { CreateEssay } from 'fbRequests/firebaseRequests'
+import { Guid } from 'guid-typescript'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import ReactMarkdown from 'react-markdown'
+import { useNavigate } from 'react-router-dom'
+import type { IEssay, IGame } from 'types/generalTypes'
 
 function WriteReview(): ReactElement {
+	const { user } = useAuth()
+	const navigate = useNavigate()
+
 	const [essayText, setEssayText] = useState('')
 	const [title, setTitle] = useState('')
 	const [isPreview, setIsPreview] = useState(false)
 	const [gameEssay, setGameEssay] = useState(false)
-	const [rating, setRating] = useState(1)
-	const [gameId, setGameId] = useState('')
-	const checkboxColor = {
-		main: '#fff',
-		light: '#aaa',
-		dark: '#fff',
-		contrastText: '#fff'
+	const [rating, setRating] = useState(5)
+	const [gameObj, setGameObj] = useState<IGame | null>(null)
+
+	const essay: IEssay = {
+		gameId: null,
+		essayTitle: title,
+		essayText,
+		essayCreated: new Date(),
+		isGame: false,
+		rating: null
 	}
+
+	function SaveEssay(): void {
+		CreateEssay(user?.username, essay).then(() => navigate('/'))
+	}
+
+	useEffect(() => {
+		essay.essayTitle = title
+		essay.essayText = essayText
+		essay.essayCreated = new Date()
+		essay.isGame = gameEssay
+
+		if (gameEssay) {
+			essay.rating = rating
+		} else {
+			essay.rating = null
+		}
+		if (gameObj) {
+			essay.gameId = gameObj.id
+		}
+	}, [essayText, title, gameEssay, rating, gameObj])
 
 	return (
 		<div>
@@ -50,34 +82,63 @@ function WriteReview(): ReactElement {
 						</div>
 						{gameEssay ? (
 							<div>
-								<SearchGameEssay />
-								<div className='flex flex-row'>
-									<RatingButton
-										value={rating}
-										activation={1}
-										actFunction={setRating}
-									/>
-									<RatingButton
-										value={rating}
-										activation={3}
-										actFunction={setRating}
-									/>
-									<RatingButton
-										value={rating}
-										activation={5}
-										actFunction={setRating}
-									/>
-									<RatingButton
-										value={rating}
-										activation={7}
-										actFunction={setRating}
-									/>
-									<RatingButton
-										value={rating}
-										activation={9}
-										actFunction={setRating}
-									/>
-								</div>
+								{gameObj === null ? (
+									<div>
+										<SearchGameEssay setGame={setGameObj} />
+									</div>
+								) : (
+									<div>
+										<div className='my-4 flex flex-row items-start'>
+											<img
+												className='mr-2 h-[5rem] w-[5rem] rounded-lg object-cover'
+												src={gameObj.background_image}
+												alt={gameObj.name}
+											/>
+											<div className='flex flex-col'>
+												<div className='h-fit flex flex-row items-center'>
+													<p className='mr-2 text-xl font-medium'>
+														{gameObj.name}
+													</p>
+													<button
+														type='button'
+														onClick={() => setGameObj(null)}
+														className='text-xl text-neutral-200'
+													>
+														<AiFillCloseCircle />
+													</button>
+												</div>
+											</div>
+										</div>
+										<div className='flex flex-row'>
+											<div className='mr-1 text-lg'>Rating:</div>
+											<RatingButton
+												value={rating}
+												activation={1}
+												actFunction={setRating}
+											/>
+											<RatingButton
+												value={rating}
+												activation={3}
+												actFunction={setRating}
+											/>
+											<RatingButton
+												value={rating}
+												activation={5}
+												actFunction={setRating}
+											/>
+											<RatingButton
+												value={rating}
+												activation={7}
+												actFunction={setRating}
+											/>
+											<RatingButton
+												value={rating}
+												activation={9}
+												actFunction={setRating}
+											/>
+										</div>
+									</div>
+								)}
 							</div>
 						) : null}
 					</div>
@@ -116,9 +177,23 @@ function WriteReview(): ReactElement {
 						<div
 							className={`${
 								isPreview ? '' : 'hidden'
-							} h-[70vh] w-full rounded-r rounded-b bg-neutral-900 p-3 text-neutral-200 outline outline-1 outline-neutral-700`}
+							} h-fit min-h-[70vh] w-full rounded-r rounded-b bg-neutral-900 p-3 text-neutral-200 outline outline-1 outline-neutral-700`}
 						>
 							<ReactMarkdown>{essayText}</ReactMarkdown>
+						</div>
+						<div className='flex w-full justify-end'>
+							<button
+								type='button'
+								disabled={gameObj === null && gameEssay}
+								onClick={() => SaveEssay()}
+								className={`my-3 w-full rounded-lg p-1 px-2 text-neutral-900 lg:w-fit  ${
+									gameObj === null && gameEssay
+										? 'cursor-default bg-neutral-400'
+										: 'cursor-pointer bg-neutral-200'
+								}`}
+							>
+								Submit
+							</button>
 						</div>
 					</div>
 				</div>

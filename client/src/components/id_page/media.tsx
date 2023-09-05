@@ -24,9 +24,6 @@ export default function Media({ game_id }: Props): ReactElement {
 	if (pics.length > 5) {
 		pics.length = 5
 	}
-	// console.log(dataVideo)
-	// const trailerUrl = `https://youtube.com/embed/${dataVideo.items[0].id.videoId}?autoplay=1&mute=1?controls=0`
-	// console.log(trailerUrl)
 
 	return (
 		<div className=''>

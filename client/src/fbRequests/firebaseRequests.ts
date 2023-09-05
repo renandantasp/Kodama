@@ -7,10 +7,12 @@ import {
 	getDoc,
 	getDocs,
 	query,
+	setDoc,
 	updateDoc,
 	where
 } from 'firebase/firestore'
-import type { INotification, IUser } from 'types/generalTypes'
+import { Guid } from 'guid-typescript'
+import type { IEssay, INotification } from 'types/generalTypes'
 import { db } from 'utils/firebase'
 
 export async function Notify(
@@ -189,13 +191,11 @@ export async function IsFollowing(
 	}
 }
 
-export async function GetListOf(ids: string[], coll: string): Promise<IUser[]> {
-	const elements: IUser[] = []
-	console.log(ids)
+export async function GetListOf<T>(ids: string[], coll: string): Promise<T[]> {
+	const elements: T[] = []
 	if (ids === undefined) {
 		return elements
 	}
-
 	const userRef = collection(db, coll)
 	const qSnapshot = await getDocs(userRef)
 	qSnapshot.forEach(doc => {
@@ -204,4 +204,29 @@ export async function GetListOf(ids: string[], coll: string): Promise<IUser[]> {
 		}
 	})
 	return elements
+}
+
+export async function CreateEssay(
+	userUsername: string,
+	essay: IEssay
+): Promise<void> {
+	const userQuery = query(
+		collection(db, 'user'),
+		where('username', '==', userUsername)
+	)
+	const userSnapshot = await getDocs(userQuery)
+	const userId = userSnapshot.docs[0].id
+	const uploadEssay = essay
+	uploadEssay.id = Guid.raw()
+	uploadEssay.userId = userId
+
+	setDoc(doc(db, 'essay', uploadEssay.id), uploadEssay)
+
+	const userEssays: string[] = userSnapshot.docs[0].data().essays as string[]
+	const userRef = doc(db, 'user', userId)
+	const userDocSnap = await getDoc(userRef)
+	userEssays.push(uploadEssay.id)
+	if (userDocSnap.exists()) {
+		await updateDoc(userRef, { essays: userEssays })
+	}
 }

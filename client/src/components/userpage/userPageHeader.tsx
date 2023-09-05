@@ -58,7 +58,7 @@ function UserPageHeader({
 											<span>Follow</span>
 										</span>
 									</a>
-								):null}
+								) : null}
 								{user !== null && !editable ? (
 									<button
 										type='button'
@@ -113,12 +113,6 @@ function UserPageHeader({
 										{pageUser.bio.location}
 									</a>
 								</div>
-								{/* <div className='font-sm flex flex-row items-center text-neutral-400'>
-									<BiSolidBalloon/>
-									<a href='/' className='ml-2'>
-									{pageUser.bio.birth} birth
-									</a>
-								</div> */}
 							</div>
 						</div>
 					</div>

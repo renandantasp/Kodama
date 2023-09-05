@@ -9,18 +9,16 @@ interface Props {
 
 function RatingButton({ activation, value, actFunction }: Props): ReactElement {
 	let setValue = activation + 1
-	if (value <= activation || value > activation + 1 ) {
+	if (value <= activation || value > activation + 1) {
 		setValue = activation + 1
+	} else {
+		setValue = activation
 	}
-  else{
-    setValue = activation
-  }
-  console.log(value)
 	return (
 		<button
 			type='button'
 			onClick={() => actFunction(setValue)}
-			className='mr-1 text-xl'
+			className='mr-1 text-xl text-amber-400'
 		>
 			{value < activation ? (
 				<div className='text-neutral-500'>

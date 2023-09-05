@@ -60,3 +60,17 @@ export function DateSinceParser(date: Date): string {
 
 	return 'Just a while ago'
 }
+
+export function RatingParser(rating: number): string {
+	if (rating === 1) return '⯪☆☆☆☆'
+	if (rating === 2) return '★☆☆☆☆'
+	if (rating === 3) return '★⯪☆☆☆'
+	if (rating === 4) return '★★☆☆☆'
+	if (rating === 5) return '★★⯪☆☆'
+	if (rating === 6) return '★★★☆☆'
+	if (rating === 7) return '★★★⯪☆'
+	if (rating === 8) return '★★★★☆'
+	if (rating === 9) return '★★★★⯪'
+	if (rating === 10) return '★★★★★'
+	return 'not rated'
+}

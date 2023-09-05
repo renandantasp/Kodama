@@ -40,7 +40,6 @@ export default function ProfilePage(): ReactElement {
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}
-	console.log({ userProfile, editable })
 	return (
 		<div className='h-screen'>
 			<Navbar />

@@ -1,10 +1,15 @@
 import SearchGame from 'api/searchGame'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
+import type { IGame } from 'types/generalTypes'
 import Loading from './loading'
 import SearchGameEssayItem from './searchGameEssayItem'
 
-function SearchGameEssay(): ReactElement {
+interface Props {
+	setGame: React.Dispatch<React.SetStateAction<IGame | null>>
+}
+
+function SearchGameEssay({ setGame }: Props): ReactElement {
 	const [query, setQuery] = useState('')
 
 	const onQueryChange = e => {
@@ -42,7 +47,12 @@ function SearchGameEssay(): ReactElement {
 										</p>
 									) : (
 										data.results.map(game => (
-											<SearchGameEssayItem key={game.name} game={game} />
+											<SearchGameEssayItem
+												key={game.name}
+												game={game}
+												setG={setGame}
+												setQ={setQuery}
+											/>
 										))
 									)}
 								</div>

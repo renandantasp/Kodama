@@ -4,19 +4,25 @@ import PlatformList from './platformsList'
 
 interface Props {
 	game: IGame
+	setG: React.Dispatch<React.SetStateAction<IGame | null>>
+	setQ: React.Dispatch<React.SetStateAction<string>>
 }
 
-function SearchGameEssayItem({ game }: Props): ReactElement {
+function SearchGameEssayItem({ game, setG, setQ }: Props): ReactElement {
+	function setGame(gameElement: IGame): void {
+		setG(gameElement)
+		setQ('')
+	}
 	return (
 		<button
 			type='button'
-			onClick={() => console.log(game.id)}
-			className='flex flex-row rounded-b p-2 w-full hover:bg-white hover:text-black'
+			onClick={() => setGame(game)}
+			className='flex w-full flex-row rounded-b p-2 hover:bg-white hover:text-black'
 		>
 			<img
 				src={game.background_image}
 				alt={game.name}
-				className='h-[2rem] mr-4 w-[2rem] rounded object-cover'
+				className='mr-4 h-[2rem] w-[2rem] rounded object-cover'
 			/>
 
 			<div>

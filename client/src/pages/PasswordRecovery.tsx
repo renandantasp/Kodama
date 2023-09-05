@@ -15,7 +15,6 @@ function PasswordRecovery(): ReactElement {
 		)
 	if (error) return <Error />
 
-	// console.log(data?.results[0].background_image)
 	return (
 		<div>
 			<Navbar />

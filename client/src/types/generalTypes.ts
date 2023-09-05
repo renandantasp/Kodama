@@ -150,3 +150,14 @@ export interface IContext {
 	isLoading: boolean
 	user: IUser | null
 }
+
+export interface IEssay {
+	id: string
+	userId: string
+	gameId: number | null
+	essayTitle: string
+	essayText: string
+	essayCreated: Date
+	isGame: boolean
+	rating: number | null
+}

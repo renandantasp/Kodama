@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import { useState } from 'react'
 import type { IUser } from 'types/generalTypes'
 import BacklogSection from './backlogSection'
+import EssaysSection from './essaysSection'
 import FollowerSection from './followerSection'
 import FollowingSection from './followingSection'
 import Notification from './notifications'
@@ -29,7 +30,7 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 			<div className='flex w-full flex-col items-center'>
 				<div className='flex flex-row items-start justify-between p-4 lg:ml-40 lg:w-[70vw]'>
 					{page === 'home' ? <div> home page still in development</div> : null}
-					{page === 'essays' ? <p>essays page still in development</p> : null}
+					{page === 'essays' ? <EssaysSection user={pageUser}/> : null}
 					{page === 'lists' ? <p>lists page still in development</p> : null}
 					{page === 'played' ? <PlayedSection user={pageUser} /> : null}
 					{page === 'backlog' ? <BacklogSection user={pageUser} /> : null}
