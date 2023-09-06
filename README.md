@@ -18,30 +18,29 @@ At first view, the whole frontend stack idealized for Kodama could be viewed as 
 
 - The framework that will be used is React <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" style="width:18px"/> , with TypeScirpt <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" style="width:18px"/> support. There are many reasons for the choice of using React as the framework, such as popularity in the market, the basic familiarity with its concepts that I already have, which will be useful when I'll be learning the usage of typescript within the frontend application context.
 
-- For styling it'll be used Tailwind <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1200px-Tailwind_CSS_Logo.svg.png" style="width:18px"/> as a CSS framework  with a Prettier <img src="https://cdn.worldvectorlogo.com/logos/prettier-1.svg" style="width:18px"/> plugin that will sort classes with the intended tailwindcss class order.
+- For styling it'll be used Tailwind <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1200px-Tailwind_CSS_Logo.svg.png" style="width:18px"/> as a CSS framework with a Prettier <img src="https://cdn.worldvectorlogo.com/logos/prettier-1.svg" style="width:18px"/> plugin that will sort classes with the intended tailwindcss class order.
 
 <!-- - The testing will be handled by Vitest <img src="https://seeklogo.com/images/V/vitest-logo-9ADDA575A5-seeklogo.com.png" style="width:18px"/> for unit and integration tests, and Cypress <img src="https://pics.freeicons.io/uploads/icons/png/3556671901536211770-512.png" style="width:18px"/> for e2e tests; -->
 
-- The deploy will be done with Vercel <img src="https://i.pinimg.com/originals/c4/35/6c/c4356cd5454d06585e0a46066b555172.png" style="width:18px"/>. 
+- The deploy will be done with Vercel <img src="https://i.pinimg.com/originals/c4/35/6c/c4356cd5454d06585e0a46066b555172.png" style="width:18px"/>.
 
 ---
+
 <h1 style="display:flex; align-items: center;"> <img src="https://cdn-icons-png.flaticon.com/512/3171/3171906.png" style="width:40px; margin-right:8px"/> The Server (Back End) Stack</h1>
 
 I study some ways to build the server for Kodama, each one has some advantages and disadantages and I'll talk about each one and why I discard/adopt them:
 
-
-
 ### 1. NestJS <img src="https://seeklogo.com/images/N/nestjs-logo-09342F76C0-seeklogo.com.png" style="width:18px; margin-right:8px"/> + MongoDB <img src="https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png" style="height:18px"/>
-The nature of the database design for Kodama align pretty well with the features of MongoDB, and NestJS offers features like: the modular structure, built-in http framework from **Express**, typescript support and many other features. The proposed solution was appropriate for the problem, but when we discuss about deploying and pricing, the picture changes. The free alternatives for deploying, like Render offers a very slow connection that would slow down severely the application, and the paid option was services like AWS EC2, which can raise too much the cost for a free/hobby project. So we rejected the first idea of using NestJS+MongoDB;
 
+The nature of the database design for Kodama align pretty well with the features of MongoDB, and NestJS offers features like: the modular structure, built-in http framework from **Express**, typescript support and many other features. The proposed solution was appropriate for the problem, but when we discuss about deploying and pricing, the picture changes. The free alternatives for deploying, like Render offers a very slow connection that would slow down severely the application, and the paid option was services like AWS EC2, which can raise too much the cost for a free/hobby project. So we rejected the first idea of using NestJS+MongoDB;
 
 ### 2. Pulumi <img src="https://www.pulumi.com/logos/brand/avatar-on-black.png" style="width:20px"/> + AWS Lambda <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Amazon_Lambda_architecture_logo.svg/2048px-Amazon_Lambda_architecture_logo.svg.png" style="height:18px"/> + MongoDB <img src="https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png" style="height:18px"/>
 
 As cost was an issue in the last idea, I search for something that would resolve this question. Using Pulumi and AWS Lambda as a backend service would be a lot more cost effective than deploying a server in an **EC2 Instance**, as I would pay for each access and the low traffic of the application would maintain a low price. The problem is that, as the traffic would be low, the **cold start** latency would be an issue, as each lambda function would have to setup an enviroment for database communication and any other feature. So we go back to a performance/latency problem.
+
 ### 3. Firebase <img src="https://assets.stickpng.com/images/5847f40ecef1014c0b5e488a.png" style="height:20px"/>
 
 Finally I stumbled across Firebase, which gives a solution for efficiency, authentication methods, rapid development, latency within a free tier.
-
 
 # Stages of the Development
 
@@ -49,13 +48,13 @@ Finally I stumbled across Firebase, which gives a solution for efficiency, authe
 
 I think the ideal development workflow, for a one person project like this, would be to begin with the building of the server and no the client view, because the front-end will be modified A LOT after the development of the server API, making the front end a not optimal feature to be developed first.
 
-But, I know myself too well that maybe this project will never be fully finished, and my main intention with this projet, was to study and develop my client/front-end skills, so the only reason to start with the client development it's my *vaporware spirit*.
+But, I know myself too well that maybe this project will never be fully finished, and my main intention with this projet, was to study and develop my client/front-end skills, so the only reason to start with the client development it's my _vaporware spirit_.
 
 Main Features 22/22:
 
 - [x] Homepage
-  - [x] Infinite Scrolling  
-  - [x] Game Cards  
+  - [x] Infinite Scrolling
+  - [x] Game Cards
 - [x] Game page
   - [x] Screenshots
   - [x] Stores
@@ -78,7 +77,7 @@ Main Features 22/22:
 
 ## Stage 2 - Firebase Integration and Defining Business Logic
 
-## 1. Firebase Integration 
+## 1. Firebase Integration
 
 I established two Firebase instances, one for development and one for production. I configured both with a email user **authentication** and a **FireStore** instance for storing the user's data.
 
@@ -87,19 +86,19 @@ I established two Firebase instances, one for development and one for production
 The first step for defining the business logic was build some type of system/data design to attend some requirements:
 
 - [x] The user can create an account
-   - [x]  He can have an unique username
-   - [x]  He can select an image for his profile picture
-   - [-]  The user will receive an verification email for validate his account
-- [x]  The user can login
-   - [x] The user will be logged out after 30 minutes of inactivity
-   - [-] The user can redefine his password if he forgets
--  [x] The user can follow another user
--  [x] The user can be followed for another user
-   - [x] This would create a notification for the user
+  - [x] He can have an unique username
+  - [x] He can select an image for his profile picture
+  - [-] The user will receive an verification email for validate his account
+- [x] The user can login
+  - [x] The user will be logged out after 30 minutes of inactivity
+  - [-] The user can redefine his password if he forgets
+- [x] The user can follow another user
+- [x] The user can be followed for another user
+  - [x] This would create a notification for the user
 - [x] The user can add games to his played list
 - [x] The user can add games to his backlog list
-- [-] The user can create essays 
-  - [-] The essays can be associated with some specific game or not
+- [x] The user can create essays
+  - [x] The essays can be associated with some specific game or not
   - [-] The user's followers would be notified of that
 - [-] The user can create lists
   - [-] The user's followers would be notified of that
@@ -109,7 +108,7 @@ The first step for defining the business logic was build some type of system/dat
   - [x] The home page will include a view for notificaions
   - [x] The home page will include a view for his following users
   - [x] The home page will include a view for his followers
-  - [-] The home page will include a view for essays
+  - [x] The home page will include a view for essays
   - [-] The home page will include a view for lists games
 
 The checked requirements are already in production. Some of those requirements we'll discuss below.
