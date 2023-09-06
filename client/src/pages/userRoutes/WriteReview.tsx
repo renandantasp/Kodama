@@ -3,7 +3,6 @@ import RatingButton from 'components/ratingButton'
 import SearchGameEssay from 'components/searchGameEssay'
 import { useAuth } from 'contexts/AuthContext'
 import { CreateEssay } from 'fbRequests/firebaseRequests'
-import { Guid } from 'guid-typescript'
 import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
@@ -23,12 +22,15 @@ function WriteReview(): ReactElement {
 	const [gameObj, setGameObj] = useState<IGame | null>(null)
 
 	const essay: IEssay = {
+		userUsername: user?.username,
 		gameId: null,
 		essayTitle: title,
 		essayText,
 		essayCreated: new Date(),
 		isGame: false,
-		rating: null
+		rating: null,
+		likes: [],
+		comments: []
 	}
 
 	function SaveEssay(): void {
@@ -39,6 +41,9 @@ function WriteReview(): ReactElement {
 		essay.essayTitle = title
 		essay.essayText = essayText
 		essay.essayCreated = new Date()
+	}, [essay, essayText, title])
+
+	useEffect(() => {
 		essay.isGame = gameEssay
 
 		if (gameEssay) {
@@ -49,8 +54,7 @@ function WriteReview(): ReactElement {
 		if (gameObj) {
 			essay.gameId = gameObj.id
 		}
-	}, [essayText, title, gameEssay, rating, gameObj])
-
+	}, [essay, gameEssay, rating, gameObj])
 	return (
 		<div>
 			<Navbar />

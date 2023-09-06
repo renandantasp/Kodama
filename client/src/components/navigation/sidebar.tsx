@@ -19,10 +19,10 @@ export default function Sidebar(): ReactElement {
 					Home
 				</a>
 				<a
-					href='/#'
+					href='/essays'
 					className='duration-400 mb-5 w-full text-2xl font-semibold transition ease-in-out hover:text-neutral-500'
 				>
-					Reviews
+					Essays
 				</a>
 				<div>
 					<p className='mb-4 w-full text-2xl font-semibold'>New Releases</p>

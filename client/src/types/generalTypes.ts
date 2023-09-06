@@ -151,13 +151,27 @@ export interface IContext {
 	user: IUser | null
 }
 
+export interface IComment {
+	text: string
+	userId: string
+	timeStamp: Date
+}
+
+export interface ILike {
+	userId: string
+	timeStamp: Date
+}
+
 export interface IEssay {
 	id: string
 	userId: string
+	userUsername: string
 	gameId: number | null
 	essayTitle: string
 	essayText: string
 	essayCreated: Date
 	isGame: boolean
 	rating: number | null
+	comments: IComment[]
+	likes: ILike[]
 }

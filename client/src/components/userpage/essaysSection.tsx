@@ -18,7 +18,7 @@ function EssaysSection({ user }: Props): ReactElement {
 		GetEssays()
 	}, [])
 	return (
-		<div className='flex flex-col flex-wrap lg:flex-row'>
+		<div className='mx-6 flex w-full flex-col flex-wrap items-stretch justify-start  lg:mx-0 lg:flex-row'>
 			{essays !== null
 				? essays.map(essay => <EssayCard key={essay.id} essay={essay} />)
 				: null}

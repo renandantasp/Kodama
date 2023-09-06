@@ -3,6 +3,8 @@ import NotFound from 'components/notFound'
 import { AuthProvider } from 'contexts/AuthContext'
 import InactivityTimeout from 'hooks/InactivityTimeout'
 import About from 'pages/About'
+import Essay from 'pages/Essay'
+import Essays from 'pages/Essays'
 import ProfilePage from 'pages/userRoutes/ProfilePage'
 import WriteReview from 'pages/userRoutes/WriteReview'
 import type { ReactElement } from 'react'
@@ -33,6 +35,8 @@ export default function App(): ReactElement {
 							</Route>
 							<Route path='/password_recovery' element={<PasswordRecovery />} />
 							<Route path='/games/:id' element={<Game />} />
+							<Route path='/essays/:id' element={<Essay />} />
+							<Route path='/essays' element={<Essays />} />
 							<Route path='/about' element={<About />} />
 							<Route path='/@:id' element={<ProfilePage />} />
 							<Route path='/@:id/notifications' element={<ProfilePage />} />

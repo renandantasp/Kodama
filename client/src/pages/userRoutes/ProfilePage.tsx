@@ -36,7 +36,7 @@ export default function ProfilePage(): ReactElement {
 			}
 		}
 		GetUser()
-	}, [user])
+	}, [])
 	if (params.id === undefined) {
 		return <div>ERRROOOOOO</div>
 	}
