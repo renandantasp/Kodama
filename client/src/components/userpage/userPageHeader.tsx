@@ -26,7 +26,6 @@ function UserPageHeader({
 	useEffect(() => {
 		IsFollowing(user?.username, pageUser.username, setIsFollowing)
 	}, [])
-
 	return (
 		<div className='flex w-full flex-col items-center'>
 			<div className='flex flex-col items-center justify-between p-4 lg:ml-40 lg:w-[70vw]'>

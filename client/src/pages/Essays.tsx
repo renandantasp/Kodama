@@ -25,7 +25,6 @@ function Essays(): ReactElement {
 		}
 		GetEssay()
 	}, [])
-	console.log(essays)
 	return (
 		<div className='h-screen'>
 			<div>

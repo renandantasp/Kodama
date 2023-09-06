@@ -94,9 +94,9 @@ function NavbarRight(): ReactElement {
 					<div className='group mr-4 hidden text-2xl transition duration-300 ease-in-out lg:flex'>
 						<NotifyBell />
 					</div>
-					<div className='group mr-4 hidden text-3xl transition duration-300 ease-in-out lg:flex'>
+					<div className='group z-40 mr-4 text-3xl transition duration-300 ease-in-out lg:flex'>
 						<BiPlus />
-						<div className='absolute -ml-8 mt-7 hidden w-28 flex-col justify-center rounded-lg bg-neutral-100 p-2 text-sm text-neutral-900  transition duration-300 ease-in-out group-hover:flex'>
+						<div className='absolute z-40 -ml-8 mt-7 hidden w-28 flex-col justify-center rounded-lg bg-neutral-100 p-2 text-sm text-neutral-900  transition duration-300 ease-in-out group-hover:flex'>
 							<a
 								href='/write_review'
 								className='my-1 w-full rounded-lg px-2 hover:bg-neutral-300'
