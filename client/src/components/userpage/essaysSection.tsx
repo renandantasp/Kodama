@@ -18,10 +18,15 @@ function EssaysSection({ user }: Props): ReactElement {
 		GetEssays()
 	}, [])
 	return (
-		<div className='mx-6 flex w-full flex-col flex-wrap items-stretch justify-start  lg:mx-0 lg:flex-row'>
-			{essays !== null
-				? essays.map(essay => <EssayCard key={essay.id} essay={essay} />)
-				: null}
+		<div className='flex w-full flex-col'>
+			<p className='pl-0 text-center text-4xl font-bold lg:pl-4 lg:text-start'>
+				Essays
+			</p>
+			<div className='mx-6 flex w-full flex-col flex-wrap items-stretch justify-start  lg:mx-0 lg:flex-row'>
+				{essays !== null
+					? essays.map(essay => <EssayCard key={essay.id} essay={essay} />)
+					: null}
+			</div>
 		</div>
 	)
 }

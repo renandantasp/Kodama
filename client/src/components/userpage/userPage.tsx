@@ -29,9 +29,25 @@ function UserPage({ pageUser, editable }: Props): ReactElement {
 			/>
 			<div className='flex w-full flex-col items-center'>
 				<div className='flex w-full flex-row items-start justify-center p-4 lg:ml-40 lg:w-[70vw]'>
-					{page === 'home' ? <div> home page still in development</div> : null}
+					{page === 'home' ? (
+						<div>
+							<div className='mb-20'>
+								<EssaysSection user={pageUser} />
+							</div>
+							<div className='mb-20'>
+								<PlayedSection user={pageUser} />
+							</div>
+							<div>
+								<BacklogSection user={pageUser} />
+							</div>
+						</div>
+					) : null}
 					{page === 'essays' ? <EssaysSection user={pageUser} /> : null}
-					{page === 'lists' ? <p>lists page still in development</p> : null}
+					{page === 'lists' ? (
+						<div className='w-full text-center text-2xl font-bold lg:text-4xl'>
+							Lists page still in development
+						</div>
+					) : null}
 					{page === 'played' ? <PlayedSection user={pageUser} /> : null}
 					{page === 'backlog' ? <BacklogSection user={pageUser} /> : null}
 					{page === 'notifications' ? (
