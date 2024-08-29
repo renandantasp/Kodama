@@ -7,7 +7,7 @@ function GetInfiniteGames(): UseInfiniteQueryResult<IGames> {
 		pageParam: pageParameter = 1
 	}): Promise<unknown> => {
 		const response = await fetch(
-			`${import.meta.env.VITE_RAWG_URL}games?ordering=updated&key=${
+			`${import.meta.env.VITE_RAWG_URL}games?key=${
 				import.meta.env.VITE_RAWG_KEY
 			}&page=${pageParameter}`
 		)
